@@ -24,7 +24,7 @@ export const Layout = ({
             <NavBar
                 navbarStart={<Activator/>}
             />
-            <main className="m-4 rounded-2xl p-4">
+            <main className="m-4 rounded-2xl p-4 max-w-7xl mx-auto">
                 { children }
             </main>
         </Drawer>
