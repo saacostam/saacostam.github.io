@@ -8,7 +8,7 @@ export const PROJECTS: Project[] = [
         navigation: {
             type: 'external',
             href: 'https://saacostam.github.io/3d-music-visualizer/',
-            height: 720,
+            height: 750,
         },
         description: '3D Music Visualizer built using P5.js and Web Audio API',
         responsive: false,
@@ -26,7 +26,7 @@ export const PROJECTS: Project[] = [
         name: 'TuneCode: Music Programming Language',
         navigation: {
             type: 'external',
-            href: 'https://saacostam.github.io/music-dsl/#/',
+            href: 'https://saacostam.github.io/fuzzy-noteable/#/',
             height: 720,
         },
         description: (<>
