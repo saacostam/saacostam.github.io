@@ -8,19 +8,14 @@ interface ProjectRepositoryGetOptions{
     skills?: SkillEnum[];
 }
 
-class ProjectRepository{
+export class ProjectRepository{
     constructor(private _all: Project[]){}
 
-    public get({
-        ids,
-        name,
-        tags,
-        skills,
-    }: ProjectRepositoryGetOptions): Project[]{
-        const _ids = ids ?? [];
-        const _name = name ?? "";
-        const _tags = tags;
-        const _skills = skills;
+    public get(options?: ProjectRepositoryGetOptions): Project[]{
+        const _ids = options?.ids ?? [];
+        const _name = options?.name ?? "";
+        const _tags = options?.tags ?? [];
+        const _skills = options?.skills ?? [];
 
         let res = this._all.map(_ => _);
 
@@ -34,7 +29,8 @@ class ProjectRepository{
         return res;
     }
 
-    public getById(id: string): Project | undefined{
+    public getById(id: string | undefined): Project | undefined{
+        if (!id) return undefined;
         return this._all.find(project => project.id === id);
     }
 }

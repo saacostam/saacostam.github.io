@@ -1,10 +1,11 @@
 import { Layout } from "./modules/core"
+import { RouterProvider } from "./modules/router"
 
 function App() {
   return (
     <>
       <Layout>
-        <div>Content</div>
+        <RouterProvider/>
       </Layout>
     </>
   )
