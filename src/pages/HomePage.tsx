@@ -1,6 +1,5 @@
-import { projectRepository } from "../data/projects";
 import { Header } from "../modules/core";
-import { ProjectCard } from "../modules/projects";
+import { ProjectCard, projectRepository } from "../modules/projects";
 
 export const HomePage = () => {
   const projects = projectRepository.get();

@@ -1,8 +1,7 @@
 import { useParams, Navigate } from "react-router-dom";
 
-import { projectRepository } from "../data/projects";
 import { Header } from "../modules/core";
-import { ProjectContent } from "../modules/projects";
+import { ProjectContent, projectRepository } from "../modules/projects";
 import { RoutePath } from "../modules/router";
 import { Skills } from "../modules/skills";
 
