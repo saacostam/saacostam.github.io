@@ -25,13 +25,13 @@ export const ProjectCard = ({
       <div className="card-body">
         <div className="flex flex-row">
           <div className="flex-1 pr-0 md:pr-8">
-            <h2 className="card-title text-primary mb-4 font-medium">{name}</h2>
+            <h3 className="card-title text-primary mb-4 font-medium">{name}</h3>
             {description}
             <Skills skills={skills} className="mt-4" color="info" />
           </div>
           <div className="flex-0 flex place-items-center">
             <Link to={projectLink} className="btn btn-outline btn-primary">
-              Go
+              Go to Project
             </Link>
           </div>
         </div>
