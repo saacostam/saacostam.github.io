@@ -28,6 +28,15 @@ export const ProjectContent = ({
             width="100%"
             height={navigation.height ?? 950}
           ></iframe>
+          <div className="flex justify-center mt-4">
+            <a
+              href={navigation.href}
+              target="_blank"
+              className="btn btn-outline btn-primary btn-sm"
+            >
+              Go To Page
+            </a>
+          </div>
         </>
       )}
     </section>
