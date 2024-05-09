@@ -3,4 +3,7 @@ export enum TagEnum {
   audio = "Audio",
   graphics = "Graphics",
   fundamentals = "Fundamentals",
+  api = "API",
+  web = "Web",
+  game = "Game",
 }

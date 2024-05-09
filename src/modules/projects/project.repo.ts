@@ -18,7 +18,7 @@ export class ProjectRepository {
     const _tags = options?.tags ?? [];
     const _skills = options?.skills ?? [];
 
-    let res = this._all.map((_) => _);
+    let res = this._all.map((_) => _).sort((a, b) => b.rating - a.rating);
 
     if (_ids && _ids.length > 0)
       res = res.filter((project) => _ids.includes(project.id));

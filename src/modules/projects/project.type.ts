@@ -16,6 +16,7 @@ export type ProjectNavigation =
 export interface Project {
   id: string;
   name: string;
+  rating: number;
   navigation: ProjectNavigation;
   description: ReactNode;
   longDescription: ReactNode;
