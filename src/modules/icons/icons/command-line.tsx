@@ -1,7 +1,7 @@
 import { twMerge } from "tailwind-merge";
 import { IconProps } from "../icon.type";
 
-export const BoltIcon = ({ className }: IconProps) => (
+export const CommandLineIcon = ({ className }: IconProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     className={twMerge("w-5 h-5", className)}
@@ -13,7 +13,7 @@ export const BoltIcon = ({ className }: IconProps) => (
     <path
       strokeLinecap="round"
       strokeLinejoin="round"
-      d="m3.75 13.5 10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75Z"
+      d="m6.75 7.5 3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z"
     />
   </svg>
 );

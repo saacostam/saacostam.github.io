@@ -28,14 +28,7 @@ export const PROJECTS: Project[] = [
       <>
         <p>
           TuneCode is a <b className="text-primary">web programming language</b>{" "}
-          for music creation, oriented towards people with experience in the use
-          of software dedicated to music production (DAW: Digital Audio
-          Workstations).
-        </p>
-        <p>
-          Using analogous concepts to DAW's, TuneCode allows the playback of
-          melodies through basic oscillators, the scheduling of samples and the
-          application of effects.
+          for music creation, oriented towards people with experience with DAWs.
         </p>
       </>
     ),

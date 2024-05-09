@@ -23,7 +23,7 @@ export const Header = ({
   const size = _size ?? "md";
   const textColor: Color = _color ?? "primary";
   const className = twMerge(
-    `text-${size} text-${textColor} font-semibold`,
+    `text-${size} text-${textColor} font-medium`,
     _className,
   );
 
