@@ -1,21 +1,28 @@
-import { ProjectNavigation } from "./project.type";
-import { DevicePhoneMobileIcon } from "../icons";
+import { Header } from "../core";
+import { Skills } from "../skills";
+import { Project } from "./project.type";
 
 export interface ProjectContentProps {
-  navigation: ProjectNavigation;
+  project: Project;
 }
 
-export const ProjectContent = ({ navigation }: ProjectContentProps) => {
+export const ProjectContent = ({
+  project: { name, navigation, skills, longDescription },
+}: ProjectContentProps) => {
   return (
     <section>
+      <Header className="text-center mb-8" size="2xl" headerLevel={2}>
+        {name}
+      </Header>
       {navigation.type === "component" && navigation.component}
       {navigation.type === "external" && (
         <>
-          <div className="bg-base-200 p-4 rounded-2xl text-secondary text-xl flex items-center mb-4">
-            {" "}
-            <DevicePhoneMobileIcon className="w-6 h-6 mr-2" />
-            <code className="text-lg">{"<iframe/>"}</code>
-          </div>
+          {longDescription}
+          <Skills
+            skills={skills}
+            className="my-4 flex justify-center w-full"
+            color="info"
+          />
           <iframe
             src={navigation.href}
             width="100%"

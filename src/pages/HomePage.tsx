@@ -6,7 +6,7 @@ export const HomePage = () => {
 
   return (
     <>
-      <Header className="text-center mb-8" size="2xl" headerLevel={2}>
+      <Header className="text-center mb-8" size="3xl" headerLevel={2}>
         Projects
       </Header>
       {projects.map((project) => (

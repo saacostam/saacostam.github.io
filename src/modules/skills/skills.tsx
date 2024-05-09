@@ -11,9 +11,11 @@ interface SkillsProps {
 export const Skills = ({ skills, className, color }: SkillsProps) => {
   return (
     <div className={className}>
-      {skills.map((skill) => (
-        <Skill skill={skill} key={skill} color={color} />
-      ))}
+      {skills
+        .sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase()))
+        .map((skill) => (
+          <Skill skill={skill} key={skill} color={color} />
+        ))}
     </div>
   );
 };

@@ -18,6 +18,7 @@ export interface Project {
   name: string;
   navigation: ProjectNavigation;
   description: ReactNode;
+  longDescription: ReactNode;
 
   responsive: boolean;
   imgSrc?: string;
