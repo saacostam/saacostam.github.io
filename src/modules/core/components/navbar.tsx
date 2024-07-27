@@ -21,7 +21,7 @@ export function NavBar({ navbarStart }: NavBarOptions) {
           </a>
         </div>
         <div className="navbar-end">
-          <button className="btn btn-ghost btn-circle">
+          <button className="btn btn-ghost btn-circle" aria-label="search">
             <SearchIcon className="text-primary w-6 h-6" />
           </button>
         </div>
