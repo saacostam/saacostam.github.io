@@ -3,7 +3,7 @@ import { getDrawer } from "./drawer";
 import { NavBar } from ".";
 import { Bars3Icon } from "../../icons";
 
-export const Layout = ({ children }: PropsWithChildren) => {
+export function Layout({ children }: PropsWithChildren) {
   const { Drawer, Activator } = useMemo(
     () =>
       getDrawer({
@@ -22,4 +22,4 @@ export const Layout = ({ children }: PropsWithChildren) => {
       <main className="m-4 rounded-2xl p-4 max-w-7xl mx-auto">{children}</main>
     </Drawer>
   );
-};
+}

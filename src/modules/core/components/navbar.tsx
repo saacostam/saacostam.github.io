@@ -7,7 +7,7 @@ interface NavBarOptions {
   navbarStart: ReactNode;
 }
 
-export const NavBar = ({ navbarStart }: NavBarOptions) => {
+export function NavBar({ navbarStart }: NavBarOptions) {
   return (
     <div>
       <div className="navbar bg-base-200">
@@ -28,4 +28,4 @@ export const NavBar = ({ navbarStart }: NavBarOptions) => {
       </div>
     </div>
   );
-};
+}

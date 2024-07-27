@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from "react"
 import { RoutePath } from "."
 
-export const useMyRouter = () => {
+export function useMyRouter() {
     const getProjectLink = useCallback((projectId: string) => {
         return `${RoutePath.homePage}/project/${projectId}`;
     }, [])

@@ -4,8 +4,8 @@ import { routes } from './route.constants';
 
 const router = createHashRouter(routes);
 
-export const RouterProvider = () => {
+export function RouterProvider() {
     return (
-        <ReactRouterProvider router={router}/>
+        <ReactRouterProvider router={router} />
     )
 }

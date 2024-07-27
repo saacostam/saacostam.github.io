@@ -5,9 +5,9 @@ export interface ProjectContentProps {
   project: Project;
 }
 
-export const ProjectContent = ({
+export function ProjectContent({
   project: { name, rating },
-}: ProjectContentProps) => {
+}: ProjectContentProps) {
   return (
     <section>
       <Header className="text-center mb-8" size="2xl" headerLevel={2}>
@@ -16,7 +16,7 @@ export const ProjectContent = ({
       <span>{rating}/5.0</span>
     </section>
   );
-};
+}
 
 export function ProjectContentSkeleton() {
   return (

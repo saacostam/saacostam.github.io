@@ -11,7 +11,7 @@ export interface HeaderProps {
   size?: Size;
 }
 
-export const Header = ({
+export function Header({
   headerLevel,
 
   className: _className,
@@ -19,7 +19,7 @@ export const Header = ({
   size: _size,
 
   children,
-}: PropsWithChildren<HeaderProps>) => {
+}: PropsWithChildren<HeaderProps>) {
   const size = _size ?? "md";
   const textColor: Color = _color ?? "primary";
   const className = twMerge(
@@ -41,4 +41,4 @@ export const Header = ({
     case 6:
       return <h6 className={className}>{children}</h6>;
   }
-};
+}

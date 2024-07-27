@@ -8,7 +8,7 @@ interface SkillsProps {
   color?: Color;
 }
 
-export const Skills = ({ skills, className, color }: SkillsProps) => {
+export function Skills({ skills, className, color }: SkillsProps) {
   return (
     <div className={className}>
       {skills
@@ -18,4 +18,4 @@ export const Skills = ({ skills, className, color }: SkillsProps) => {
         ))}
     </div>
   );
-};
+}

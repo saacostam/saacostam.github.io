@@ -7,9 +7,9 @@ interface ProjectCardProps {
   project: Project;
 }
 
-export const ProjectCard = ({
+export function ProjectCard({
   project: { id, name, smImage },
-}: ProjectCardProps) => {
+}: ProjectCardProps) {
   const { getProjectLink } = useMyRouter();
 
   const projectLink = getProjectLink(id);
@@ -35,7 +35,7 @@ export const ProjectCard = ({
       </div>
     </div>
   );
-};
+}
 
 export function ProjectCardSkeleton() {
   return (

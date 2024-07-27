@@ -6,7 +6,7 @@ import { Project, ProjectContent, ProjectContentSkeleton } from "../modules/proj
 import { QueryKeys } from "../modules/react-query";
 import { RoutePath } from "../modules/router";
 
-export const ProjectPage = () => {
+export function ProjectPage() {
   const goTo = useNavigate();
 
   const { id } = useParams();
@@ -33,4 +33,4 @@ export const ProjectPage = () => {
   }
 
   return null;
-};
+}

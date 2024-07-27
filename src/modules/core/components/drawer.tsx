@@ -9,12 +9,12 @@ interface DrawerFactoryProps {
   };
 }
 
-interface DrawerProps {}
+interface DrawerProps { }
 
-export const getDrawer = ({
+export function getDrawer({
   id,
   activator: { className, children },
-}: DrawerFactoryProps) => {
+}: DrawerFactoryProps) {
   const Activator: FunctionComponent = () => (
     <label
       htmlFor={id}
@@ -55,4 +55,4 @@ export const getDrawer = ({
     Activator,
     Drawer,
   };
-};
+}
