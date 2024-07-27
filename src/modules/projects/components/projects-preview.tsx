@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+
 import { ProjectCard } from "./project.card";
 import { Project } from "../project.type";
 
@@ -5,7 +7,12 @@ export interface ProjectsPreviewProps {
   projects: Project[];
 }
 
-export function ProjectsPreview({ projects }: ProjectsPreviewProps) {
+export function ProjectsPreview({ projects: _projects }: ProjectsPreviewProps) {
+  const projects = useMemo(() => {
+    const descendingOrder = (a: Project, b: Project) => b.rating - a.rating;
+    return _projects.sort(descendingOrder);
+  }, [_projects]);
+
   return (
     <>
       {projects.map((project) => (
