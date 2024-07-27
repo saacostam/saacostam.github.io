@@ -2,9 +2,9 @@ import { Navigate, RouteObject } from "react-router-dom";
 
 import { HomePage, NotFoundPage, ProjectPage } from "../../pages";
 
-export enum RoutePath{
+export enum RoutePath {
     homePage = '',
-    projectPage = '/:id',
+    projectPage = '/project/:id',
     notFoundPage = '/not-found',
     wildcard = '*',
 }
@@ -12,18 +12,18 @@ export enum RoutePath{
 export const routes: RouteObject[] = [
     {
         path: RoutePath.homePage,
-        element: <HomePage/>
+        element: <HomePage />
     },
     {
         path: RoutePath.projectPage,
-        element: <ProjectPage/>
+        element: <ProjectPage />
     },
     {
         path: RoutePath.notFoundPage,
-        element: <NotFoundPage/>
+        element: <NotFoundPage />
     },
     {
         path: RoutePath.wildcard,
-        element: <Navigate to={RoutePath.notFoundPage}/>
+        element: <Navigate to={RoutePath.notFoundPage} />
     }
 ]
