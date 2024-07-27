@@ -20,7 +20,12 @@ export function ProjectCard({
       {smImage ? (
         <div className="mockup-window bg-base-300 w-80 mx-8 mt-8 lg:mr-0 lg:mb-8 shrink-0">
           <figure>
-            <img src={`${FETCH_STATIC_DATA}${smImage}`} alt="Album" />
+            <img
+              src={`${FETCH_STATIC_DATA}${smImage}`}
+              alt="project-image"
+              width="320"
+              height="160"
+            />
           </figure>
         </div>
       ) : null}
