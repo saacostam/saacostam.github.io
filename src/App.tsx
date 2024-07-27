@@ -1,12 +1,18 @@
+import { QueryClient, QueryClientProvider } from "react-query"
+
 import { Layout } from "./modules/core"
 import { RouterProvider } from "./modules/router"
+
+const queryClient = new QueryClient()
 
 function App() {
   return (
     <>
-      <Layout>
-        <RouterProvider/>
-      </Layout>
+      <QueryClientProvider client={queryClient}>
+        <Layout>
+          <RouterProvider />
+        </Layout>
+      </QueryClientProvider>
     </>
   )
 }

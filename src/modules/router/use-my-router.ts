@@ -3,7 +3,7 @@ import { RoutePath } from "."
 
 export const useMyRouter = () => {
     const getProjectLink = useCallback((projectId: string) => {
-        return `${RoutePath.homePage}${projectId}`;
+        return `${RoutePath.homePage}/project/${projectId}`;
     }, [])
 
     return useMemo(() => ({

@@ -1,17 +1,36 @@
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { useQuery } from "react-query";
 
-import { ProjectContent, projectRepository } from "../modules/projects";
+import { getProjectById } from "../modules/projects/fetching";
+import { Project, ProjectContent, ProjectContentSkeleton } from "../modules/projects";
+import { QueryKeys } from "../modules/react-query";
 import { RoutePath } from "../modules/router";
 
 export const ProjectPage = () => {
+  const goTo = useNavigate();
+
   const { id } = useParams();
 
-  const project = projectRepository.getById(id);
-  if (!project) return <Navigate to={RoutePath.notFoundPage} />;
+  const { data, isLoading, isSuccess } = useQuery<Project>({
+    queryFn: () => getProjectById({ id: id || "" }),
+    queryKey: [QueryKeys.PROJECT_BY_ID, id],
+    onError(err) {
+      console.error(err);
+      goTo(RoutePath.notFoundPage);
+    },
+  })
 
-  return (
-    <>
-      <ProjectContent project={project} />
-    </>
-  );
+  if (isLoading) {
+    return <ProjectContentSkeleton />;
+  }
+
+  if (isSuccess) {
+    return (
+      <>
+        <ProjectContent project={data} />
+      </>
+    );
+  }
+
+  return null;
 };
