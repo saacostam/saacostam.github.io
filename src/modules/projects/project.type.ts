@@ -28,6 +28,12 @@ export interface LeanProject {
   rating: number;
 
   /**
+   * Description for the project
+   *
+   */
+  description: string;
+
+  /**
    * A small-size image (300x150) for a project.
    *
    * @type {?string}
