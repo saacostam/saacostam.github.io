@@ -27,7 +27,9 @@ export function ProjectCard({
       <div className="card-body">
         <div className="flex flex-col lg:flex-row items-center">
           <div className="flex-1 pr-0 md:pr-8">
-            <h3 className="card-title text-primary mb-4 font-medium">{name}</h3>
+            <h3 className="card-title text-primary mb-4 font-medium text-center">
+              {name}
+            </h3>
           </div>
           <div className="flex-0 flex place-items-center">
             <Link to={projectLink} className="btn btn-outline btn-primary">
