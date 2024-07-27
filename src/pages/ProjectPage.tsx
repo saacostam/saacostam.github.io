@@ -2,7 +2,11 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "react-query";
 
 import { getProjectById } from "../modules/projects/fetching";
-import { Project, ProjectContent, ProjectContentSkeleton } from "../modules/projects";
+import {
+  Project,
+  ProjectContent,
+  ProjectContentSkeleton,
+} from "../modules/projects";
 import { QueryKeys } from "../modules/react-query";
 import { RoutePath } from "../modules/router";
 
@@ -18,7 +22,7 @@ export function ProjectPage() {
       console.error(err);
       goTo(RoutePath.notFoundPage);
     },
-  })
+  });
 
   if (isLoading) {
     return <ProjectContentSkeleton />;

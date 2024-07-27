@@ -38,7 +38,5 @@ export function ProjectCard({
 }
 
 export function ProjectCardSkeleton() {
-  return (
-    <div className="w-100 keleton mb-4 h-48"></div>
-  )
+  return <div className="w-100 keleton mb-4 h-48"></div>;
 }

@@ -1,1 +1,1 @@
-export * from './fetching.constants';
+export * from "./fetching.constants";

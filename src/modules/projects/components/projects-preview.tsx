@@ -2,15 +2,15 @@ import { ProjectCard } from "./project.card";
 import { Project } from "../project.type";
 
 export interface ProjectsPreviewProps {
-    projects: Project[]
+  projects: Project[];
 }
 
-export function ProjectsPreview({
-    projects
-}: ProjectsPreviewProps) {
-    return <>
-        {projects.map((project) => (
-            <ProjectCard project={project} key={project.id} />
-        ))}
+export function ProjectsPreview({ projects }: ProjectsPreviewProps) {
+  return (
+    <>
+      {projects.map((project) => (
+        <ProjectCard project={project} key={project.id} />
+      ))}
     </>
+  );
 }

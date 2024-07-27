@@ -8,9 +8,7 @@ export function HomePage() {
       <Header className="text-center mb-8" size="3xl" headerLevel={2}>
         Projects
       </Header>
-      <ProjectsGate
-        ProjectOnSuccess={ProjectsPreview}
-      />
+      <ProjectsGate ProjectOnSuccess={ProjectsPreview} />
     </>
   );
 }

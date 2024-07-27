@@ -25,5 +25,5 @@ export function ProjectContentSkeleton() {
       <div className="skeleton mx-auto w-100 h-64 mb-8"></div>
       <div className="skeleton mx-auto w-100 h-48 mb-8"></div>
     </>
-  )
+  );
 }

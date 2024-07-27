@@ -9,7 +9,7 @@ interface DrawerFactoryProps {
   };
 }
 
-interface DrawerProps { }
+interface DrawerProps {}
 
 export function getDrawer({
   id,

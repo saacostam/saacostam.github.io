@@ -1,3 +1,3 @@
-export * from './errors';
-export * from './HomePage';
-export * from './ProjectPage';
+export * from "./errors";
+export * from "./HomePage";
+export * from "./ProjectPage";

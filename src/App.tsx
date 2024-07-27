@@ -1,9 +1,9 @@
-import { QueryClient, QueryClientProvider } from "react-query"
+import { QueryClient, QueryClientProvider } from "react-query";
 
-import { Layout } from "./modules/core"
-import { RouterProvider } from "./modules/router"
+import { Layout } from "./modules/core";
+import { RouterProvider } from "./modules/router";
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         </Layout>
       </QueryClientProvider>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
