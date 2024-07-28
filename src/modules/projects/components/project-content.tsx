@@ -21,7 +21,7 @@ export function ProjectContent({
         className="mockup-window bg-base-300 border mx-auto"
         style={{ ...(width ? { width: width } : {}) }}
       >
-        <iframe src={url} height={height} width={width}></iframe>
+        <iframe src={url} height={height} width={width} title={name}></iframe>
       </div>
     </section>
   );
