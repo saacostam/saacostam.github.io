@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Header } from "../../core";
 import { InfoIcon, XIcon } from "../../icons";
 import { Project } from "../project.type";
+import { useWindowDimensions } from "../../viewport";
 
 export interface ProjectContentProps {
   project: Project;
@@ -10,8 +11,12 @@ export interface ProjectContentProps {
 export function ProjectContent({
   project: { id, description, name, url, iframe },
 }: ProjectContentProps) {
+  const { width: windowWidth } = useWindowDimensions();
+
   const height = iframe.height || 750;
-  const width = iframe.width;
+  const width = iframe.width
+    ? Math.min(iframe.width, windowWidth * 0.95)
+    : undefined;
 
   const { canBeUsedInMobile, isResponsive } = iframe;
 
