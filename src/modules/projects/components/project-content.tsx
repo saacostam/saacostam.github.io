@@ -6,16 +6,22 @@ export interface ProjectContentProps {
 }
 
 export function ProjectContent({
-  project: { description, name, url },
+  project: { description, name, url, iframe },
 }: ProjectContentProps) {
+  const height = iframe.height || 750;
+  const width = iframe.width;
+
   return (
     <section>
       <Header className="text-center mb-8" size="2xl" headerLevel={2}>
         {name}
       </Header>
       <p className="mb-8">{description}</p>
-      <div className="mockup-window bg-base-300 border">
-        <iframe src={url} height="820"></iframe>
+      <div
+        className="mockup-window bg-base-300 border mx-auto"
+        style={{ ...(width ? { width: width } : {}) }}
+      >
+        <iframe src={url} height={height} width={width}></iframe>
       </div>
     </section>
   );

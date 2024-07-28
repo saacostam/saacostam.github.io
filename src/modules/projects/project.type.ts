@@ -63,4 +63,11 @@ export interface Project extends LeanProject {
    * @type {string}
    */
   url: string;
+
+  iframe: {
+    isResponsive: boolean;
+    width?: number;
+    height?: number;
+    canBeUsedInMobile?: boolean;
+  };
 }
