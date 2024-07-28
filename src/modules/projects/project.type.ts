@@ -56,4 +56,11 @@ export interface Project extends LeanProject {
    * @type {?string}
    */
   mdImage?: string;
+
+  /**
+   * Url to project
+   *
+   * @type {string}
+   */
+  url: string;
 }

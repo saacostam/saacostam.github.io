@@ -6,14 +6,17 @@ export interface ProjectContentProps {
 }
 
 export function ProjectContent({
-  project: { name, rating },
+  project: { description, name, url },
 }: ProjectContentProps) {
   return (
     <section>
       <Header className="text-center mb-8" size="2xl" headerLevel={2}>
         {name}
       </Header>
-      <span>{rating}/5.0</span>
+      <p className="mb-8">{description}</p>
+      <div className="mockup-window bg-base-300 border">
+        <iframe src={url} height="820"></iframe>
+      </div>
     </section>
   );
 }

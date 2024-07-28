@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 
-import { Project } from "../project.type";
+import { LeanProject } from "../project.type";
 import { useMyRouter } from "../../router";
 import { FETCH_STATIC_DATA } from "../../constants";
 
 interface ProjectCardProps {
-  project: Project;
+  project: LeanProject;
 }
 
 export function ProjectCard({
