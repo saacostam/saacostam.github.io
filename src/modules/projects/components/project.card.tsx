@@ -47,5 +47,14 @@ export function ProjectCard({
 }
 
 export function ProjectCardSkeleton() {
-  return <div className="w-100 keleton mb-4 h-48"></div>;
+  return (
+    <div className="w-100 skeleton mb-4 h-80 lg:h-64 flex flex-col lg:flex-row items-center p-8">
+      <div className="skeleton h-40 w-80 mr-8 mb-4 lg:mb-0 shrink-0"></div>
+      <div className="flex-1 grow-1 w-100">
+        <div className="skeleton h-8 w-48 mb-4"></div>
+        <div className="skeleton h-8 w-100 mb-0 lg:mb-4"></div>
+        <div className="skeleton hidden lg:block h-16 w-100"></div>
+      </div>
+    </div>
+  );
 }
