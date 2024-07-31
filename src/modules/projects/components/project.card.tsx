@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import { LeanProject } from "../project.type";
+import { LeanProject } from "../types";
 import { useMyRouter } from "../../router";
 import { FETCH_STATIC_DATA } from "../../constants";
 

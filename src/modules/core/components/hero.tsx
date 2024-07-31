@@ -1,29 +1,25 @@
-import { twMerge } from "tailwind-merge";
-import { FilterIcon, FireIcon } from "../../icons";
-import { useProjectFilterUrl } from "../../projects";
-import { Link } from "react-router-dom";
+import { FilterIcon } from "../../icons";
+import {
+  ProjectCategory,
+  ProjectCategoryFilter,
+  useProjectFilterUrl,
+} from "../../projects";
 
-// TODO: Read name from enum
 const HERO_FILTERS = [
   {
-    name: "Software Engineering",
+    name: ProjectCategory.SoftwareEngineering,
     Icon: <FilterIcon />,
     color: "primary",
   },
   {
-    name: "Music Software",
+    name: ProjectCategory.MusicSoftware,
     Icon: <FilterIcon />,
     color: "primary",
   },
   {
-    name: "Games",
+    name: ProjectCategory.Games,
     Icon: <FilterIcon />,
     color: "primary",
-  },
-  {
-    name: "Random",
-    Icon: <FireIcon />,
-    color: "secondary",
   },
 ];
 
@@ -40,21 +36,14 @@ export function Hero() {
           </h2>
           <div className="py-3 text-2xl font-semibold flex flex-col">
             {HERO_FILTERS.map((filter, index, filters) => (
-              <Link
+              <ProjectCategoryFilter
+                state={state}
                 key={filter.name}
-                to={updateFilter((prevState) => ({
-                  ...prevState,
-                  categories: [...prevState.categories, filter.name],
-                }))}
-                className={twMerge(
-                  "btn",
-                  `btn-${filter.color}`,
-                  index !== filters.length - 1 ? "mb-2" : "",
-                  !state.categories.includes(filter.name) ? `btn-outline` : "",
-                )}
-              >
-                {filter.Icon} {filter.name}
-              </Link>
+                color={filter.color}
+                category={filter.name}
+                updateFilter={updateFilter}
+                className={index !== filters.length - 1 ? "mb-2" : ""}
+              />
             ))}
           </div>
         </div>

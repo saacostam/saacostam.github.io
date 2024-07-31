@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 
 import { ProjectCard } from "./project.card";
-import { Project } from "../project.type";
+import { Project } from "../types";
 
 export interface ProjectsPreviewProps {
   projects: Project[];

@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 
 import { getAllLeanProjects } from "../fetching";
 import { ProjectCardSkeleton } from "./project.card";
-import { Project } from "../project.type";
+import { Project } from "../types";
 import { QueryKeys } from "../../react-query";
 import { ErrorHandler } from "../../core";
 

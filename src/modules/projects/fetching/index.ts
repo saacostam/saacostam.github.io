@@ -1,5 +1,5 @@
 import { FETCH_STATIC_DATA } from "../../constants";
-import { Project } from "../project.type";
+import { Project } from "../types";
 
 const GET_ALL_LEAN_PROJECTS_DEFAULT_ERROR = `Error fetching projects preview. Please try again later!`;
 

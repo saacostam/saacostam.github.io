@@ -71,3 +71,9 @@ export interface Project extends LeanProject {
     canBeUsedInMobile?: boolean;
   };
 }
+
+export enum ProjectCategory {
+  SoftwareEngineering = "Software Engineering",
+  MusicSoftware = "Music Software",
+  Games = "Games",
+}

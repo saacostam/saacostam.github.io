@@ -1,5 +1,6 @@
 import { useCallback, useMemo } from "react";
 import { useLocation } from "react-router-dom";
+import { removeDuplicateStrings } from "../../array-utils";
 
 export interface ProjectFilterUrlState {
   categories: string[];
@@ -11,13 +12,17 @@ type UpdateFilterCallback =
   | ProjectFilterUrlState
   | ((prevState: ProjectFilterUrlState) => ProjectFilterUrlState);
 
+export type UpdateFilter = (state: UpdateFilterCallback) => string;
+
 export function useProjectFilterUrl() {
   const { search, pathname } = useLocation();
 
   const state = useMemo(() => {
     const urlSearchParams = new URLSearchParams(search);
 
-    const categories = urlSearchParams.getAll("category");
+    const categories = removeDuplicateStrings(
+      urlSearchParams.getAll("category"),
+    );
 
     return {
       categories,
@@ -27,6 +32,8 @@ export function useProjectFilterUrl() {
   const updateFilter = useCallback(
     (_state: UpdateFilterCallback): string => {
       const newState = typeof _state === "function" ? _state(state) : _state;
+
+      newState.categories = removeDuplicateStrings(newState.categories);
 
       const newUrlSearchParams = new URLSearchParams();
 
