@@ -4,6 +4,7 @@ export * from "./command-line";
 export * from "./device-phone-mobile";
 export * from "./filter";
 export * from "./fire";
+export * from "./github";
 export * from "./info";
 export * from "./refresh";
 export * from "./search";

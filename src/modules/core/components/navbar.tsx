@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 
-import { SearchIcon, CommandLineIcon } from "../../icons";
+import { GITHUB_PROFILE } from "../data";
+import { GithubIcon, CommandLineIcon } from "../../icons";
 import { RoutePath } from "../../router";
 
 interface NavBarOptions {
@@ -21,9 +22,14 @@ export function NavBar({ navbarStart }: NavBarOptions) {
           </a>
         </div>
         <div className="navbar-end">
-          <button className="btn btn-ghost btn-circle" aria-label="search">
-            <SearchIcon className="text-primary w-6 h-6" />
-          </button>
+          <a
+            href={GITHUB_PROFILE}
+            className="btn btn-ghost"
+            aria-label="search"
+            target="_blank"
+          >
+            My GitHub <GithubIcon className="w-8 h-8 text-white" />
+          </a>
         </div>
       </div>
     </div>
