@@ -34,6 +34,13 @@ export interface LeanProject {
   description: string;
 
   /**
+   * Category of the project. Used for filtering
+   *
+   * @type {ProjectCategory}
+   */
+  category: ProjectCategory;
+
+  /**
    * A small-size image (300x150) for a project.
    *
    * @type {?string}

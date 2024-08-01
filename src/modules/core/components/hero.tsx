@@ -7,24 +7,25 @@ import {
 
 const HERO_FILTERS = [
   {
-    name: ProjectCategory.SoftwareEngineering,
+    category: ProjectCategory.SoftwareEngineering,
     Icon: <FilterIcon />,
     color: "primary",
   },
   {
-    name: ProjectCategory.MusicSoftware,
+    category: ProjectCategory.MusicSoftware,
     Icon: <FilterIcon />,
     color: "primary",
   },
   {
-    name: ProjectCategory.Games,
+    category: ProjectCategory.Games,
     Icon: <FilterIcon />,
     color: "primary",
   },
 ];
 
 export function Hero() {
-  const { state, updateFilter } = useProjectFilterUrl();
+  const { state, addCategoryToFilter, removeCategoryToFilter } =
+    useProjectFilterUrl();
 
   return (
     <div className="hero bg-base-200 py-8 mb-8 rounded-3xl">
@@ -35,13 +36,15 @@ export function Hero() {
             Full Stack Software Engineer
           </h2>
           <div className="py-3 text-2xl font-semibold flex flex-col">
-            {HERO_FILTERS.map((filter, index, filters) => (
+            {HERO_FILTERS.map(({ category, color, Icon }, index, filters) => (
               <ProjectCategoryFilter
+                icon={Icon}
                 state={state}
-                key={filter.name}
-                color={filter.color}
-                category={filter.name}
-                updateFilter={updateFilter}
+                key={category}
+                color={color}
+                category={category}
+                onApplyFilterLink={addCategoryToFilter(category)}
+                onRemoveFilterLink={removeCategoryToFilter(category)}
                 className={index !== filters.length - 1 ? "mb-2" : ""}
               />
             ))}

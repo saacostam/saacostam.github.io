@@ -1,48 +1,36 @@
 import { Link } from "react-router-dom";
 import { twMerge } from "tailwind-merge";
 
-import { ProjectFilterUrlState, UpdateFilter } from "../hooks";
+import { ProjectFilterUrlState } from "../hooks";
 import { ProjectCategory } from "../types";
-import { useMemo } from "react";
+import { ReactNode } from "react";
 
 export interface ProjectCategoryFilterProps {
+  icon: ReactNode;
   color: string;
   category: ProjectCategory;
-  updateFilter: UpdateFilter;
   state: ProjectFilterUrlState;
+
+  onApplyFilterLink: string;
+  onRemoveFilterLink: string;
 
   className: string;
 }
 
 export function ProjectCategoryFilter({
+  icon,
   color,
   state,
   category,
-  updateFilter,
-
+  onApplyFilterLink,
+  onRemoveFilterLink,
   className,
 }: ProjectCategoryFilterProps) {
   const isSelected = state.categories.includes(category);
 
-  const newLink = useMemo(
-    () =>
-      !isSelected
-        ? updateFilter((prevState) => ({
-            ...prevState,
-            categories: [...prevState.categories, category],
-          }))
-        : updateFilter((prevState) => ({
-            ...prevState,
-            categories: prevState.categories.filter(
-              (filterCategory) => filterCategory !== category,
-            ),
-          })),
-    [category, isSelected, updateFilter],
-  );
-
   return (
     <Link
-      to={newLink}
+      to={!isSelected ? onApplyFilterLink : onRemoveFilterLink}
       className={twMerge(
         "btn",
         `btn-${color}`,
@@ -50,6 +38,7 @@ export function ProjectCategoryFilter({
         !isSelected ? `btn-outline` : "",
       )}
     >
+      {icon}
       {category}
     </Link>
   );

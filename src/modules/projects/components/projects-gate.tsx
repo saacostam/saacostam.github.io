@@ -3,17 +3,17 @@ import { useQuery } from "react-query";
 
 import { getAllLeanProjects } from "../fetching";
 import { ProjectCardSkeleton } from "./project.card";
-import { Project } from "../types";
+import { LeanProject } from "../types";
 import { QueryKeys } from "../../react-query";
 import { ErrorHandler } from "../../core";
 
 export interface ProjectsGateProps {
-  ProjectOnSuccess: (props: { projects: Project[] }) => ReactNode;
+  ProjectOnSuccess: (props: { projects: LeanProject[] }) => ReactNode;
 }
 
 export function ProjectsGate({ ProjectOnSuccess }: ProjectsGateProps) {
   const { data, error, isSuccess, isError, isLoading } = useQuery<
-    Project[],
+    LeanProject[],
     Error
   >({
     queryFn: () => getAllLeanProjects(),
