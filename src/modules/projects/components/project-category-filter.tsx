@@ -32,7 +32,7 @@ export function ProjectCategoryFilter({
     <Link
       to={!isSelected ? onApplyFilterLink : onRemoveFilterLink}
       className={twMerge(
-        "btn",
+        "btn w-64",
         `btn-${color}`,
         className,
         !isSelected ? `btn-outline` : "",

@@ -69,6 +69,13 @@ export function useProjectFilterUrl() {
     [state, pathname],
   );
 
+  const resetFilter = useCallback(() => {
+    return updateFilter({
+      categories: [],
+      pageNumber: 1,
+    });
+  }, [updateFilter]);
+
   const addCategoryToFilter: AddCategoryToFilter = useCallback(
     (category: ProjectCategory) => {
       return updateFilter((state) => ({
@@ -147,6 +154,7 @@ export function useProjectFilterUrl() {
   return {
     state,
     applyFilter,
+    resetFilter,
     goToPageNumber,
     addCategoryToFilter,
     removeCategoryToFilter,

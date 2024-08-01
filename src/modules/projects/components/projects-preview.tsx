@@ -5,13 +5,14 @@ import { twMerge } from "tailwind-merge";
 import { ProjectCard } from "./project.card";
 import { LeanProject } from "../types";
 import { useProjectFilterUrl } from "../hooks";
+import { SearchIcon, XIcon } from "../../icons";
 
 export interface ProjectsPreviewProps {
   projects: LeanProject[];
 }
 
 export function ProjectsPreview({ projects: _projects }: ProjectsPreviewProps) {
-  const { applyFilter, goToPageNumber } = useProjectFilterUrl();
+  const { applyFilter, resetFilter, goToPageNumber } = useProjectFilterUrl();
 
   const { projects, minPage, maxPage, pageNumber } = useMemo(() => {
     return applyFilter(_projects);
@@ -42,9 +43,25 @@ export function ProjectsPreview({ projects: _projects }: ProjectsPreviewProps) {
 
   return (
     <>
-      {projects.map((project) => (
-        <ProjectCard project={project} key={project.id} />
-      ))}
+      {projects.length > 0 ? (
+        projects.map((project) => (
+          <ProjectCard project={project} key={project.id} />
+        ))
+      ) : (
+        <section className="bg-base-200 pt-16 pb-12 mb-8 rounded-3xl flex flex-col items-center">
+          <SearchIcon className="text-white w-48 h-48 mb-4 bg-secondary p-8 rounded-full" />
+          <h3 className="text-secondary font-semibold text-3xl mb-2">
+            No results found!
+          </h3>
+          <p className="mb-4">Adjust your filters and try again.</p>
+          <Link
+            to={resetFilter()}
+            className="btn btn-secondary btn-outline w-64"
+          >
+            <XIcon /> Reset filters
+          </Link>
+        </section>
+      )}
       <section className="flex justify-center p-4">
         <div className="join">{pagination}</div>
       </section>
