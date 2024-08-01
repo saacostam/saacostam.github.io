@@ -53,7 +53,7 @@ export function ProjectContent({
             </div>
           </div>
           <button
-            className="btn btn-sm btn-circle btn-warning absolute right-4 top-4"
+            className="absolute right-4 top-4"
             onClick={() => setShowViewPortIssuesAlert(false)}
           >
             <XIcon />
