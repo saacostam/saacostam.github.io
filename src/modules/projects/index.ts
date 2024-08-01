@@ -1,3 +1,4 @@
 export * from "./components";
 export * from "./fetching";
-export * from "./project.type";
+export * from "./hooks";
+export * from "./types";

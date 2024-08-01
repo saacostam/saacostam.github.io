@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Header } from "../../core";
 import { InfoIcon, XIcon } from "../../icons";
-import { Project } from "../project.type";
+import { Project } from "../types";
 import { useWindowDimensions } from "../../viewport";
 
 export interface ProjectContentProps {
