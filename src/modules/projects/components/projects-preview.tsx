@@ -63,7 +63,7 @@ export function ProjectsPreview({ projects: _projects }: ProjectsPreviewProps) {
         </section>
       )}
       <section className="flex justify-center p-4">
-        <div className="join">{pagination}</div>
+        <div className={pagination.length > 1 ? "join" : ""}>{pagination}</div>
       </section>
     </>
   );
