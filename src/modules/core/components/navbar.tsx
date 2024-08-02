@@ -28,7 +28,9 @@ export function NavBar({ navbarStart }: NavBarOptions) {
             aria-label="search"
             target="_blank"
           >
-            My GitHub <GithubIcon className="w-8 h-8 text-white" />
+            <span className="hidden md:block font-semibold">My GitHub</span>
+            <span className="block md:hidden font-semibold">GH</span>
+            <GithubIcon className="w-8 h-8 text-white" />
           </a>
         </div>
       </div>
