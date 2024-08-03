@@ -61,10 +61,21 @@ export function ProjectContent({
         </div>
       ) : null}
       <div
-        className="mockup-window bg-base-300 border mx-auto"
+        className="mockup-browser bg-base-300 border mx-auto"
         style={{ ...(width ? { width: width } : {}) }}
       >
-        <iframe src={url} height={height} width={width} title={name}></iframe>
+        <div className="mockup-browser-toolbar">
+          <a className="input" href={url} target="_blank">
+            {url}
+          </a>
+        </div>
+        <iframe
+          src={url}
+          height={height}
+          width={width}
+          title={name}
+          className="w-full"
+        ></iframe>
       </div>
     </section>
   );
