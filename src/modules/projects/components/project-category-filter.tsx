@@ -6,7 +6,6 @@ import { ProjectCategory } from "../types";
 import { ReactNode } from "react";
 
 export interface ProjectCategoryFilterProps {
-  icon: ReactNode;
   color: string;
   category: ProjectCategory;
   state: ProjectFilterUrlState;
@@ -14,7 +13,8 @@ export interface ProjectCategoryFilterProps {
   onApplyFilterLink: string;
   onRemoveFilterLink: string;
 
-  className: string;
+  icon?: ReactNode;
+  className?: string;
 }
 
 export function ProjectCategoryFilter({
@@ -32,7 +32,7 @@ export function ProjectCategoryFilter({
     <Link
       to={!isSelected ? onApplyFilterLink : onRemoveFilterLink}
       className={twMerge(
-        "btn w-64",
+        "btn",
         `btn-${color}`,
         className,
         !isSelected ? `btn-outline` : "",

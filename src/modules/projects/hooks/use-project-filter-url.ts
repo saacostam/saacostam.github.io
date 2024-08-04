@@ -1,5 +1,6 @@
 import { useCallback, useMemo } from "react";
 import { useLocation } from "react-router-dom";
+
 import { removeDuplicateStrings } from "../../array-utils";
 import { LeanProject, ProjectCategory } from "../types";
 import { PROJECTS_PREVIEW_CONFIG } from "../config";
@@ -15,6 +16,7 @@ type UpdateFilterCallback =
   | ProjectFilterUrlState
   | ((prevState: ProjectFilterUrlState) => ProjectFilterUrlState);
 
+export type ResetFilter = () => string;
 export type UpdateFilter = (state: UpdateFilterCallback) => string;
 export type AddCategoryToFilter = (category: ProjectCategory) => string;
 export type RemoveCategoryToFilter = (category: ProjectCategory) => string;
@@ -69,7 +71,7 @@ export function useProjectFilterUrl() {
     [state, pathname],
   );
 
-  const resetFilter = useCallback(() => {
+  const resetFilter: ResetFilter = useCallback(() => {
     return updateFilter({
       categories: [],
       pageNumber: 1,

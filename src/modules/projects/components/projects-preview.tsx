@@ -4,15 +4,27 @@ import { twMerge } from "tailwind-merge";
 
 import { ProjectCard } from "./project.card";
 import { LeanProject } from "../types";
-import { useProjectFilterUrl } from "../hooks";
-import { SearchIcon, XIcon } from "../../icons";
+import { useProjectFilterAttributes, useProjectFilterUrl } from "../hooks";
+import { EmptySearch } from "./empty-search";
+import { FilterIcon } from "../../icons";
+import { ProjectCategoryFilter } from "./project-category-filter";
 
 export interface ProjectsPreviewProps {
   projects: LeanProject[];
 }
 
 export function ProjectsPreview({ projects: _projects }: ProjectsPreviewProps) {
-  const { applyFilter, resetFilter, goToPageNumber } = useProjectFilterUrl();
+  const { categories } = useProjectFilterAttributes({
+    projects: _projects,
+  });
+  const {
+    state,
+    applyFilter,
+    resetFilter,
+    goToPageNumber,
+    addCategoryToFilter,
+    removeCategoryToFilter,
+  } = useProjectFilterUrl();
 
   const { projects, minPage, maxPage, pageNumber } = useMemo(() => {
     return applyFilter(_projects);
@@ -43,24 +55,29 @@ export function ProjectsPreview({ projects: _projects }: ProjectsPreviewProps) {
 
   return (
     <>
+      <section className="py-4 px-8 bg-base-200 text-primary rounded-2xl mb-4">
+        <h6 className="font-semibold mb-3">
+          <FilterIcon className="inline" /> Category
+        </h6>
+        <div className="flex flex-wrap">
+          {categories.map((category) => (
+            <ProjectCategoryFilter
+              state={state}
+              color="primary"
+              category={category}
+              onApplyFilterLink={addCategoryToFilter(category)}
+              onRemoveFilterLink={removeCategoryToFilter(category)}
+              className="mr-2 btn-xs mb-2"
+            />
+          ))}
+        </div>
+      </section>
       {projects.length > 0 ? (
         projects.map((project) => (
           <ProjectCard project={project} key={project.id} />
         ))
       ) : (
-        <section className="bg-base-200 pt-16 pb-12 mb-8 rounded-3xl flex flex-col items-center">
-          <SearchIcon className="text-white w-48 h-48 mb-4 bg-secondary p-8 rounded-full" />
-          <h3 className="text-secondary font-semibold text-3xl mb-2">
-            No results found!
-          </h3>
-          <p className="mb-4">Adjust your filters and try again.</p>
-          <Link
-            to={resetFilter()}
-            className="btn btn-secondary btn-outline w-64"
-          >
-            <XIcon /> Reset filters
-          </Link>
-        </section>
+        <EmptySearch resetFilter={resetFilter} />
       )}
       <section className="flex justify-center p-4">
         <div className={pagination.length > 1 ? "join" : ""}>{pagination}</div>
