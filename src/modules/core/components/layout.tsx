@@ -19,7 +19,9 @@ export function Layout({ children }: PropsWithChildren) {
   return (
     <Drawer>
       <NavBar navbarStart={<Activator /> && null} />
-      <main className="m-4 rounded-2xl p-4 max-w-7xl mx-auto">{children}</main>
+      <main className="m-4 mt-20 rounded-2xl p-4 max-w-7xl mx-auto">
+        {children}
+      </main>
     </Drawer>
   );
 }
