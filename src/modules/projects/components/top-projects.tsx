@@ -30,8 +30,8 @@ export function TopProjectsCard({
   getProjectLink,
 }: TopProjectsCardProps) {
   return (
-    <div className="card bg-base-300 shadow-xl">
-      <figure className="opacity-60">
+    <div className="card bg-base-300 image-full shadow-xl">
+      <figure className="opacity-50">
         <img src={`${FETCH_STATIC_DATA}${smImage}`} alt="Projects" />
       </figure>
       <div className="card-body">
