@@ -31,7 +31,7 @@ export function Hero() {
         <ClickIcon /> Check My Projects
       </Link>
 
-      <div className="divider divider-primary my-8">
+      <div className="divider divider-primary mt-12 mb-8">
         <h4 className="text-xl font-bold text-center">Topics that I enjoy!</h4>
       </div>
 
