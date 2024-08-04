@@ -1,6 +1,6 @@
 import { Navigate, RouteObject } from "react-router-dom";
 
-import { ProjectsPage, NotFoundPage, ProjectPage } from "../../pages";
+import { ProjectsPage, NotFoundPage, ProjectPage, HomePage } from "../../pages";
 
 export enum RoutePath {
   homePage = "",
@@ -11,6 +11,10 @@ export enum RoutePath {
 }
 
 export const routes: RouteObject[] = [
+  {
+    path: RoutePath.homePage,
+    element: <HomePage />,
+  },
   {
     path: RoutePath.projectsPage,
     element: <ProjectsPage />,
