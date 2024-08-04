@@ -59,18 +59,16 @@ export function ProjectsPreview({ projects: _projects }: ProjectsPreviewProps) {
         <h6 className="font-semibold mb-3">
           <FilterIcon className="inline" /> Category
         </h6>
-        <div className="flex flex-wrap">
-          {categories.map((category) => (
-            <ProjectCategoryFilter
-              state={state}
-              color="primary"
-              category={category}
-              onApplyFilterLink={addCategoryToFilter(category)}
-              onRemoveFilterLink={removeCategoryToFilter(category)}
-              className="mr-2 btn-xs mb-2"
-            />
-          ))}
-        </div>
+        {categories.map((category) => (
+          <ProjectCategoryFilter
+            state={state}
+            color="primary"
+            category={category}
+            onApplyFilterLink={addCategoryToFilter(category)}
+            onRemoveFilterLink={removeCategoryToFilter(category)}
+            className="mr-2 btn-sm mb-2"
+          />
+        ))}
       </section>
       {projects.length > 0 ? (
         projects.map((project) => (
