@@ -1,18 +1,19 @@
 import { Navigate, RouteObject } from "react-router-dom";
 
-import { HomePage, NotFoundPage, ProjectPage } from "../../pages";
+import { ProjectsPage, NotFoundPage, ProjectPage } from "../../pages";
 
 export enum RoutePath {
   homePage = "",
-  projectPage = "/project/:id",
+  projectsPage = "/projects",
+  projectPage = "/projects/:id",
   notFoundPage = "/not-found",
   wildcard = "*",
 }
 
 export const routes: RouteObject[] = [
   {
-    path: RoutePath.homePage,
-    element: <HomePage />,
+    path: RoutePath.projectsPage,
+    element: <ProjectsPage />,
   },
   {
     path: RoutePath.projectPage,
