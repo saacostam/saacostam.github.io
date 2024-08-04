@@ -2,7 +2,6 @@
 
 # Refactor
 
-- [ ] Create projects filtering component to check and manage current projects filter
 - [ ] Move to the top of the page
   - Maybe by goint to a specific element id or by going to the top of the page on router change.
 - [ ] Add images for slippery slope, tetris and piano-roll.
