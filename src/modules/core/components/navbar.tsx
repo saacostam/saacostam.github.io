@@ -43,7 +43,7 @@ export function NavBar() {
           className="btn btn-ghost text-2xl flex justify-center text-primary font-medium"
           href={RoutePath.homePage}
         >
-          <CommandLineIcon className="w-6 h-6" /> saacostam
+          <CommandLineIcon className="w-5 h-5 mt-1" /> saacostam
         </a>
       </div>
       <div className="navbar-center hidden lg:flex">
