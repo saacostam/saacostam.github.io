@@ -55,7 +55,7 @@ export function ProjectsPreview({ projects: _projects }: ProjectsPreviewProps) {
 
   return (
     <>
-      <section className="pt-4 pb-2 px-8 bg-base-200 text-primary rounded-2xl mb-4">
+      <section className="pt-4 pb-2 px-8 bg-base-200 text-primary rounded-2xl mb-4 flex justify-center items-center flex-wrap">
         <span className="font-semibold mb-3 mr-3 inline-block">
           <FilterIcon className="inline w-6 h-6 mb-0.5" /> Filter by Category:
         </span>
