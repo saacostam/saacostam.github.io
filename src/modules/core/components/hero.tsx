@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { twMerge } from "tailwind-merge";
 import {
   PROJECT_CATEGORIES,
   mapCategoryToIcon,
@@ -7,9 +8,18 @@ import {
 import { RoutePath } from "../../../modules/router";
 import { ClickIcon } from "../../../modules/icons";
 
-export function Hero() {
+export interface HeroProps {
+  className?: string;
+}
+
+export function Hero({ className }: HeroProps) {
   return (
-    <section className="bg-base-200 rounded-2xl p-8 flex flex-col justify-center">
+    <section
+      className={twMerge(
+        "bg-base-200 rounded-2xl p-8 flex flex-col justify-center",
+        className,
+      )}
+    >
       <div className="avatar mb-4 flex justify-center">
         <div className="ring-primary ring-offset-base-100 w-32 rounded-full ring ring-offset-2">
           <img

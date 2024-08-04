@@ -17,7 +17,7 @@ export function ErrorHandler({ errors }: ErrorHandlerProps) {
   return (
     <section className="mx-auto max-w-80 p-8 rounded-2xl border-error border-2">
       <div className="w-32 h-32 bg-error text-error-content mx-auto rounded flex items-center justify-center mask mask-circle">
-        <XIcon />
+        <XIcon className="w-16 h-16" />
       </div>
       <h3 className="text-error font-bold text-center my-4 text-2xl">
         Something went wrong!
