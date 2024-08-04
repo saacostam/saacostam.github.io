@@ -55,10 +55,10 @@ export function ProjectsPreview({ projects: _projects }: ProjectsPreviewProps) {
 
   return (
     <>
-      <section className="py-4 px-8 bg-base-200 text-primary rounded-2xl mb-4">
-        <h6 className="font-semibold mb-3">
-          <FilterIcon className="inline" /> Category
-        </h6>
+      <section className="pt-4 pb-2 px-8 bg-base-200 text-primary rounded-2xl mb-4">
+        <span className="font-semibold mb-3 mr-3 inline-block">
+          <FilterIcon className="inline w-6 h-6 mb-0.5" /> Filter by Category:
+        </span>
         {categories.map((category) => (
           <ProjectCategoryFilter
             state={state}
