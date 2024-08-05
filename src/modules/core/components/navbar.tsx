@@ -17,7 +17,7 @@ const NAV_OPTIONS = [
 export function NavBar() {
   const navOptions = useMemo(() => {
     return NAV_OPTIONS.map(({ path, label }) => (
-      <li>
+      <li key={path}>
         <a href={path} className="font-semibold">
           {label}
         </a>

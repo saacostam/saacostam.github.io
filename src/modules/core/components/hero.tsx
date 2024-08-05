@@ -56,6 +56,7 @@ export function Hero({ className }: HeroProps) {
       <div className="flex flex-wrap justify-center">
         {PROJECT_CATEGORIES.map((category) => (
           <Link
+            key={category}
             to={`${RoutePath.projectsPage}?category=${category}`}
             className="btn btn-primary btn-lg btn-outline w-72 mx-2 mb-2"
           >

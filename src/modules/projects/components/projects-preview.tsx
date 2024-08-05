@@ -61,6 +61,7 @@ export function ProjectsPreview({ projects: _projects }: ProjectsPreviewProps) {
         </span>
         {categories.map((category) => (
           <ProjectCategoryFilter
+            key={category}
             state={state}
             color="primary"
             category={category}

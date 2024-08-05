@@ -80,6 +80,7 @@ export function TopProjects() {
             <>
               {projects.map((project) => (
                 <TopProjectsCard
+                  key={project.id}
                   project={project}
                   getProjectLink={getProjectLink}
                 />
