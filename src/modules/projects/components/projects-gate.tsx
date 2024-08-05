@@ -23,6 +23,7 @@ export function ProjectsGate({ ProjectOnSuccess }: ProjectsGateProps) {
   if (isLoading) {
     return (
       <>
+        <div className="skeleton h-16 mb-4"></div>
         <ProjectCardSkeleton />
         <ProjectCardSkeleton />
         <ProjectCardSkeleton />

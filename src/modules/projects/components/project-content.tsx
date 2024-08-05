@@ -85,8 +85,8 @@ export function ProjectContentSkeleton() {
   return (
     <>
       <div className="skeleton mx-auto w-96 h-12 mb-8"></div>
-      <div className="skeleton mx-auto w-100 h-64 mb-8"></div>
-      <div className="skeleton mx-auto w-100 h-48 mb-8"></div>
+      <div className="skeleton mx-auto w-100 h-16 mb-8"></div>
+      <div className="skeleton mx-auto w-100 h-96 mb-8"></div>
     </>
   );
 }
