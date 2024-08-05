@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, ScrollRestoration } from "react-router-dom";
 import { useQuery } from "react-query";
 
 import { getProjectById } from "../modules/projects/fetching";
@@ -32,6 +32,7 @@ export function ProjectPage() {
     return (
       <>
         <ProjectContent project={data} />
+        <ScrollRestoration />
       </>
     );
   }

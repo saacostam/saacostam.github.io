@@ -1,3 +1,4 @@
+import { ScrollRestoration } from "react-router-dom";
 import { Header } from "../modules/core";
 import { ProjectsGate } from "../modules/projects";
 import { ProjectsPreview } from "../modules/projects/components/projects-preview";
@@ -9,6 +10,7 @@ export function ProjectsPage() {
         My Projects
       </Header>
       <ProjectsGate ProjectOnSuccess={ProjectsPreview} />
+      <ScrollRestoration />
     </>
   );
 }

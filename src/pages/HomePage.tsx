@@ -1,3 +1,4 @@
+import { ScrollRestoration } from "react-router-dom";
 import { Hero } from "../modules/core";
 import { TopProjects } from "../modules/projects";
 
@@ -6,6 +7,7 @@ export function HomePage() {
     <>
       <Hero className="mb-8" />
       <TopProjects />
+      <ScrollRestoration />
     </>
   );
 }
