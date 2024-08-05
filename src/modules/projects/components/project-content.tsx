@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
 import { Header } from "../../core";
-import { InfoIcon, XIcon } from "../../icons";
 import { Project } from "../types";
 import { useWindowDimensions } from "../../viewport";
+import { ViewportAlert } from "./viewport-alert";
 
 export interface ProjectContentProps {
   project: Project;
@@ -25,40 +24,14 @@ export function ProjectContent({
     ...(isResponsive === false ? ["Not Responsive"] : []),
   ];
 
-  const [showViewPortIssuesAlert, setShowViewPortIssuesAlert] = useState(true);
-
-  useEffect(() => {
-    setShowViewPortIssuesAlert(true);
-  }, [id]);
-
   return (
-    <section>
+    <section key={id}>
       <Header className="text-center mb-8" size="2xl" headerLevel={2}>
         {name}
       </Header>
       <p className="mb-4">{description}</p>
-      {viewPortIssues.length > 0 && showViewPortIssuesAlert ? (
-        <div
-          className="lg:hidden relative alert alert-warning shadow-lg opacity-90 mb-4"
-          role="alert"
-        >
-          <InfoIcon className="hidden md:block" />
-          <div>
-            <h3 className="font-bold">Ooops!</h3>
-            <div className="text-xs">
-              This project may not work on smaller viewports:{" "}
-              <span className="font-semibold">
-                {viewPortIssues.join(" - ")}
-              </span>
-            </div>
-          </div>
-          <button
-            className="absolute right-4 top-4"
-            onClick={() => setShowViewPortIssuesAlert(false)}
-          >
-            <XIcon />
-          </button>
-        </div>
+      {viewPortIssues.length > 0 ? (
+        <ViewportAlert viewPortIssues={viewPortIssues} />
       ) : null}
       <div
         className="mockup-browser bg-base-300 border mx-auto"
