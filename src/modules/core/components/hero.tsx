@@ -6,7 +6,8 @@ import {
   mapCategoryToLabel,
 } from "../../../modules/projects";
 import { RoutePath } from "../../../modules/router";
-import { ClickIcon } from "../../../modules/icons";
+import { ClickIcon, GithubIcon } from "../../../modules/icons";
+import { GITHUB_PROFILE } from "../data";
 
 export interface HeroProps {
   className?: string;
@@ -36,10 +37,17 @@ export function Hero({ className }: HeroProps) {
       </h2>
       <Link
         to={RoutePath.projectsPage}
-        className="btn btn-primary btn-lg w-72 mx-auto"
+        className="btn btn-primary btn-lg w-72 mx-auto mb-2"
       >
-        <ClickIcon /> Check My Projects
+        <ClickIcon className="w-7 h-7" /> Check My Projects
       </Link>
+      <a
+        target="_blank"
+        href={GITHUB_PROFILE}
+        className="btn btn-neutral btn-lg w-72 mx-auto"
+      >
+        <GithubIcon className="w-7 h-7" /> Check My Github
+      </a>
 
       <div className="divider divider-primary mt-12 mb-8">
         <h4 className="text-xl font-bold text-center">Topics that I enjoy!</h4>
