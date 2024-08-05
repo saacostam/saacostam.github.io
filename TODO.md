@@ -2,11 +2,9 @@
 
 # Refactor
 
-- [ ] Move to the top of the page
-  - Maybe by going to a specific element id or by going to the top of the page on router change.
 - [ ] Add images for slippery slope, tetris and piano-roll.
 - [ ] Add link to repo, per each project.
-- Lalu: Fix song display for artist page
+- [ ] Lalu: Fix song display for artist page
 - [ ] Check all projects and their link-backs, to point to new url.
   - [ ] Fake Store API
 - [ ] Add short description to images.
