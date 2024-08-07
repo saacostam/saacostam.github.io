@@ -2,7 +2,6 @@
 
 # Refactor
 
-- [ ] Add images for slippery slope, tetris and piano-roll.
 - [ ] Add link to repo, per each project.
 - [ ] Lalu: Fix song display for artist page
 - [ ] Check all projects and their link-backs, to point to new url.
