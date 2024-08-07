@@ -12,4 +12,5 @@ export * from "./musical-note";
 export * from "./puzzle";
 export * from "./refresh";
 export * from "./search";
+export * from "./rocket";
 export * from "./x";

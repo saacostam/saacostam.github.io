@@ -53,7 +53,7 @@ export function NavBar() {
         <a href={GITHUB_PROFILE} className="btn btn-ghost" target="_blank">
           <span className="hidden md:block font-semibold">My GitHub</span>
           <span className="block md:hidden font-semibold">GH</span>
-          <GithubIcon className="w-8 h-8 text-white" />
+          <GithubIcon className="w-8 h-8" />
         </a>
       </div>
     </div>
