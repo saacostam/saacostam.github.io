@@ -2,6 +2,8 @@
 
 # Refactor
 
+- [ ] Fix Scroll for games
+  - It is fixed by adding a `e.preventDefault` on the document of each game.
 - [ ] Add link to repo, per each project.
 - [ ] Lalu: Fix song display for artist page
 - [ ] Check all projects and their link-backs, to point to new url.
