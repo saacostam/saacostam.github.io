@@ -11,9 +11,16 @@ export function useProjectFilterAttributes({
   projects,
 }: UseProjectFilterAttributesProps) {
   const categories = useMemo(() => {
-    const allProjectCategories: ProjectCategory[] = projects.map(
-      ({ category }) => category,
+    const allProjectCategories: ProjectCategory[] = projects.reduce(
+      (allProjectCategories: ProjectCategory[], { category }: LeanProject) => {
+        if (category instanceof Array) allProjectCategories.push(...category);
+        else allProjectCategories.push(category);
+
+        return allProjectCategories;
+      },
+      [],
     );
+
     return removeDuplicateStrings(allProjectCategories) as ProjectCategory[];
   }, [projects]);
 

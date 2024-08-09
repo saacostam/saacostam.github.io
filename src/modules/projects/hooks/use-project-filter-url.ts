@@ -123,7 +123,13 @@ export function useProjectFilterUrl() {
         .filter(
           ({ category }) =>
             state.categories.length === 0 ||
-            state.categories.includes(category),
+            state.categories.some((currStateCategory) =>
+              category instanceof Array
+                ? category.some(
+                    (oneCategory) => oneCategory === currStateCategory,
+                  )
+                : category === currStateCategory,
+            ),
         )
         .sort(descendingOrder);
       const totalProjects = projects.length;
