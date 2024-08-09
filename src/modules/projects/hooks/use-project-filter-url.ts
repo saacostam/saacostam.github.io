@@ -123,12 +123,13 @@ export function useProjectFilterUrl() {
         .filter(
           ({ category }) =>
             state.categories.length === 0 ||
-            state.categories.some((currStateCategory) =>
-              category instanceof Array
-                ? category.some(
-                    (oneCategory) => oneCategory === currStateCategory,
-                  )
-                : category === currStateCategory,
+            state.categories.some(
+              // url category
+              (currStateCategory) =>
+                category.some(
+                  // some project category matches url category
+                  (oneCategory) => oneCategory === currStateCategory,
+                ),
             ),
         )
         .sort(descendingOrder);

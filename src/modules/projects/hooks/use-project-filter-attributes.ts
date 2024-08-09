@@ -13,9 +13,7 @@ export function useProjectFilterAttributes({
   const categories = useMemo(() => {
     const allProjectCategories: ProjectCategory[] = projects.reduce(
       (allProjectCategories: ProjectCategory[], { category }: LeanProject) => {
-        if (category instanceof Array) allProjectCategories.push(...category);
-        else allProjectCategories.push(category);
-
+        allProjectCategories.push(...category);
         return allProjectCategories;
       },
       [],

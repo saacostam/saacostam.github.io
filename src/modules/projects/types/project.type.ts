@@ -36,9 +36,9 @@ export interface LeanProject {
   /**
    * Category of the project. Used for filtering
    *
-   * @type {ProjectCategory | ProjectCategory[]}
+   * @type {ProjectCategory[]}
    */
-  category: ProjectCategory | ProjectCategory[];
+  category: ProjectCategory[];
 
   /**
    * A small-size image (300x150) for a project.
