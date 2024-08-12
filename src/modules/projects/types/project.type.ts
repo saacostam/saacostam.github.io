@@ -65,11 +65,18 @@ export interface Project extends LeanProject {
   mdImage?: string;
 
   /**
-   * Url to project
+   * Url to project demo
    *
    * @type {string}
    */
   url: string;
+
+  /**
+   * Url to project repository
+   *
+   * @type {string}
+   */
+  repoUrl: string;
 
   iframe: {
     isResponsive: boolean;
