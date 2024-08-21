@@ -18,22 +18,26 @@ export function ProjectCard({
   return (
     <div className="card lg:card-side bg-base-200 shadow-xl mb-4 items-center">
       {smImage ? (
-        <div className="mockup-window bg-base-300 w-80 mx-8 mt-8 lg:mr-0 lg:mb-8 shrink-0">
-          <figure>
-            <img
-              src={`${FETCH_STATIC_DATA}${smImage}`}
-              alt="project-image"
-              width="320"
-              height="160"
-            />
-          </figure>
-        </div>
+        <Link to={projectLink}>
+          <div className="mockup-window bg-base-300 w-80 mx-8 mt-8 lg:mr-0 lg:mb-8 shrink-0">
+            <figure>
+              <img
+                src={`${FETCH_STATIC_DATA}${smImage}`}
+                alt="project-image"
+                width="320"
+                height="160"
+              />
+            </figure>
+          </div>
+        </Link>
       ) : null}
       <div className="card-body md:flex-row items-center md:items-start">
         <div className="flex-1 pr-0 md:pr-8">
-          <h3 className="card-title text-primary mb-4 font-medium text-center">
-            {name}
-          </h3>
+          <Link to={projectLink}>
+            <h3 className="card-title text-primary mb-4 font-medium text-center">
+              {name}
+            </h3>
+          </Link>
           <p className="hidden mb-8 md:block lg:mb-0">{description}</p>
         </div>
         <div className="flex-0 flex place-items-center ">
