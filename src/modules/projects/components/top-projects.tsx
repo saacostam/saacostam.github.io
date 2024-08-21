@@ -35,7 +35,9 @@ export function TopProjectsCard({
         <img src={`${FETCH_STATIC_DATA}${smImage}`} alt="Projects" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title text-primary">{name}</h2>
+        <Link to={getProjectLink(id)}>
+          <h2 className="card-title text-primary">{name}</h2>
+        </Link>
         <p className="mb-4">{description}</p>
         <div className="card-actions justify-end">
           <Link className="btn btn-primary" to={getProjectLink(id)}>
