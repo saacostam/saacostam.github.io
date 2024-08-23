@@ -6,6 +6,7 @@ import {
   ProjectContent,
   ProjectContentSkeleton,
   ProjectDto,
+  SimilarProjects,
 } from "../modules/projects";
 import { QueryKeys } from "../modules/react-query";
 import { RoutePath } from "../modules/router";
@@ -31,7 +32,8 @@ export function ProjectPage() {
   if (isSuccess) {
     return (
       <>
-        <ProjectContent project={data} />
+        <ProjectContent project={data} className="mb-12" />
+        <SimilarProjects similarProjects={data.similarProjects} />
         <ScrollRestoration />
       </>
     );
