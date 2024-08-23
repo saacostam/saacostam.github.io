@@ -91,3 +91,7 @@ export enum ProjectCategory {
   MusicSoftware = "Music Software",
   Games = "Games",
 }
+
+export interface ProjectDto extends Project {
+  similarProjects: LeanProject[];
+}

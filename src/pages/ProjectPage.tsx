@@ -3,9 +3,9 @@ import { useQuery } from "react-query";
 
 import { getProjectById } from "../modules/projects/fetching";
 import {
-  Project,
   ProjectContent,
   ProjectContentSkeleton,
+  ProjectDto,
 } from "../modules/projects";
 import { QueryKeys } from "../modules/react-query";
 import { RoutePath } from "../modules/router";
@@ -15,7 +15,7 @@ export function ProjectPage() {
 
   const { id } = useParams();
 
-  const { data, isLoading, isSuccess } = useQuery<Project>({
+  const { data, isLoading, isSuccess } = useQuery<ProjectDto>({
     queryFn: () => getProjectById({ id: id || "" }),
     queryKey: [QueryKeys.PROJECT_BY_ID, id],
     onError(err) {
