@@ -6,10 +6,12 @@ import { ViewportAlert } from "./viewport-alert";
 
 export interface ProjectContentProps {
   project: Project;
+  className?: string;
 }
 
 export function ProjectContent({
   project: { id, description, name, url, iframe, repoUrl },
+  className,
 }: ProjectContentProps) {
   const { width: windowWidth } = useWindowDimensions();
 
@@ -26,7 +28,7 @@ export function ProjectContent({
   ];
 
   return (
-    <section key={id}>
+    <section key={id} className={className}>
       <Header className="text-center mb-4" size="2xl" headerLevel={2}>
         {name}
       </Header>
