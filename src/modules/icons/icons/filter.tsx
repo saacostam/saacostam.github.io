@@ -10,6 +10,8 @@ export function FilterIcon({ className }: IconProps) {
       strokeWidth={1.5}
       stroke="currentColor"
       className={twMerge("w-5 h-5", className)}
+      aria-label="Filter Icon"
+      aria-hidden="true"
     >
       <path
         strokeLinecap="round"

@@ -21,7 +21,11 @@ export function SimilarProjects({ similarProjects }: SimilarProjectsProps) {
       </div>
       <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
         {similarProjects.map((project) => (
-          <TopProjectsCard project={project} getProjectLink={getProjectLink} />
+          <TopProjectsCard
+            key={project.id}
+            project={project}
+            getProjectLink={getProjectLink}
+          />
         ))}
       </div>
     </section>

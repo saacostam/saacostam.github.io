@@ -10,6 +10,8 @@ export function ClickIcon({ className }: IconProps) {
       stroke="currentColor"
       xmlns="http://www.w3.org/2000/svg"
       className={twMerge("w-5 h-5", className)}
+      aria-label="Click Icon"
+      aria-hidden="true"
     >
       <path
         strokeLinecap="round"

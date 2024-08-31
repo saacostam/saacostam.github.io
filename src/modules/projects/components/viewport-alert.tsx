@@ -24,6 +24,7 @@ export function ViewportAlert({ viewPortIssues }: ViewportAlertProps) {
       <button
         className="absolute right-4 top-4"
         onClick={() => setShowViewPortIssuesAlert(false)}
+        aria-label="Close Alert"
       >
         <XIcon />
       </button>

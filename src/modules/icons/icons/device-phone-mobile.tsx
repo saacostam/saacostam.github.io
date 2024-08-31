@@ -10,6 +10,8 @@ export function DevicePhoneMobileIcon({ className }: IconProps) {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
+      aria-label="Phone Icon"
+      aria-hidden="true"
     >
       <path
         strokeLinecap="round"

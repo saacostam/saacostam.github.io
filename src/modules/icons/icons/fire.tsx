@@ -10,6 +10,8 @@ export function FireIcon({ className }: IconProps) {
       strokeWidth={1.5}
       stroke="currentColor"
       className={twMerge("w-5 h-5", className)}
+      aria-label="Fire Icon"
+      aria-hidden="true"
     >
       <path
         strokeLinecap="round"

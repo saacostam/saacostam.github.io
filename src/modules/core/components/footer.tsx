@@ -11,7 +11,11 @@ export function Footer() {
       </aside>
       <nav>
         <div className="grid grid-flow-col gap-4">
-          <a href={GITHUB_PROFILE} target="_blank">
+          <a
+            href={GITHUB_PROFILE}
+            target="_blank"
+            aria-label="Check my Github Profile"
+          >
             <GithubIcon className="w-8 h-8" />
           </a>
         </div>

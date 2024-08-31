@@ -10,6 +10,8 @@ export function XIcon({ className }: IconProps) {
       strokeWidth={1.5}
       stroke="currentColor"
       className={twMerge("size-6", className)}
+      aria-label="Close Icon"
+      aria-hidden="true"
     >
       <path
         strokeLinecap="round"
