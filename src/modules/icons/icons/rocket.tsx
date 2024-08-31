@@ -8,6 +8,8 @@ export function RocketIcon({ className }: IconProps) {
       id="emoji"
       viewBox="0 0 72 72"
       className={twMerge("w-16 h-16", className)}
+      aria-label="Rocket Icon"
+      aria-hidden="true"
     >
       <g id="color">
         <circle cx="48.4645" cy="23.7594" r="2.1014" fill="#fff" />

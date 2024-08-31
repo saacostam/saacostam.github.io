@@ -10,6 +10,8 @@ export function InfoIcon({ className }: IconProps) {
       strokeWidth={1.5}
       stroke="currentColor"
       className={twMerge("size-6", className)}
+      aria-label="Info Icon"
+      aria-hidden="true"
     >
       <path
         strokeLinecap="round"

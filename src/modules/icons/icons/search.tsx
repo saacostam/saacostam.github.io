@@ -9,6 +9,8 @@ export function SearchIcon({ className }: IconProps) {
       fill="none"
       viewBox="0 0 24 24"
       stroke="currentColor"
+      aria-label="Search Icon"
+      aria-hidden="true"
     >
       <path
         strokeLinecap="round"

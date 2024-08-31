@@ -10,6 +10,8 @@ export function CommandLineIcon({ className }: IconProps) {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
+      aria-label="Command Line Icon"
+      aria-hidden="true"
     >
       <path
         strokeLinecap="round"

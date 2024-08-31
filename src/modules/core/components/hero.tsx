@@ -45,12 +45,13 @@ export function Hero({ className }: HeroProps) {
         target="_blank"
         href={GITHUB_PROFILE}
         className="btn btn-neutral btn-lg w-72 mx-auto"
+        aria-label="Check My Github Profile"
       >
         <GithubIcon className="w-7 h-7" /> Check My Github
       </a>
 
       <div className="divider divider-primary mt-12 mb-8">
-        <h4 className="text-xl font-bold text-center">Topics that I enjoy!</h4>
+        <h3 className="text-xl font-bold text-center">Topics that I enjoy!</h3>
       </div>
 
       <div className="flex flex-wrap justify-center">
