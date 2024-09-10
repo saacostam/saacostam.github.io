@@ -5,15 +5,15 @@ import { useWindowDimensions } from "../../viewport";
 import { ViewportAlert } from "./viewport-alert";
 import { twMerge } from "tailwind-merge";
 
-export interface ProjectContentProps {
+export interface ProjectInfoProps {
   project: Project;
   className?: string;
 }
 
-export function ProjectContent({
+export function ProjectInfo({
   project: { id, content, description, name, url, iframe, repoUrl },
   className,
-}: ProjectContentProps) {
+}: ProjectInfoProps) {
   const { width: windowWidth } = useWindowDimensions();
 
   const height = iframe.height || 750;

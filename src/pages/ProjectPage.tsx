@@ -3,7 +3,7 @@ import { useQuery } from "react-query";
 
 import { getProjectById } from "../modules/projects/fetching";
 import {
-  ProjectContent,
+  ProjectInfo,
   ProjectContentSkeleton,
   ProjectDto,
   SimilarProjects,
@@ -32,7 +32,7 @@ export function ProjectPage() {
   if (isSuccess) {
     return (
       <>
-        <ProjectContent project={data} className="mb-12" />
+        <ProjectInfo project={data} className="mb-12" />
         <SimilarProjects similarProjects={data.similarProjects} />
         <ScrollRestoration />
       </>
