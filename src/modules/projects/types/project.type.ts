@@ -65,6 +65,13 @@ export interface Project extends LeanProject {
   mdImage?: string;
 
   /**
+   * Project page content
+   *
+   * @type {string}
+   */
+  content: ProjectContent[];
+
+  /**
    * Url to project demo
    *
    * @type {string}
@@ -95,3 +102,37 @@ export enum ProjectCategory {
 export interface ProjectDto extends Project {
   similarProjects: LeanProject[];
 }
+
+// Project Content
+export enum ProjectContentType {
+  HEADER = "header",
+  TEXT = "text",
+  UNORDERED_LIST = "ul",
+  ORDERED_LIST = "ol",
+}
+
+export interface HeaderContent {
+  type: ProjectContentType.HEADER;
+  text: string;
+}
+
+export interface TextContent {
+  type: ProjectContentType.TEXT;
+  text: string;
+}
+
+export interface UnorderedListContent {
+  type: ProjectContentType.UNORDERED_LIST;
+  listElements: string[];
+}
+
+export interface OrderedListContent {
+  type: ProjectContentType.ORDERED_LIST;
+  listElements: string[];
+}
+
+export type ProjectContent =
+  | HeaderContent
+  | TextContent
+  | UnorderedListContent
+  | OrderedListContent;

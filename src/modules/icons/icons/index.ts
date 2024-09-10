@@ -1,5 +1,6 @@
 export * from "./bars-3";
 export * from "./bolt";
+export * from "./chevron-right";
 export * from "./click";
 export * from "./code";
 export * from "./command-line";
