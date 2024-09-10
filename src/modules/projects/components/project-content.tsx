@@ -1,8 +1,9 @@
 import { Header } from "../../core";
-import { FireIcon, GithubIcon } from "../../icons";
-import { Project } from "../types";
+import { ChevronRightIcon, FireIcon, GithubIcon } from "../../icons";
+import { Project, ProjectContentType } from "../types";
 import { useWindowDimensions } from "../../viewport";
 import { ViewportAlert } from "./viewport-alert";
+import { twMerge } from "tailwind-merge";
 
 export interface ProjectContentProps {
   project: Project;
@@ -10,7 +11,7 @@ export interface ProjectContentProps {
 }
 
 export function ProjectContent({
-  project: { id, description, name, url, iframe, repoUrl },
+  project: { id, content, description, name, url, iframe, repoUrl },
   className,
 }: ProjectContentProps) {
   const { width: windowWidth } = useWindowDimensions();
@@ -68,6 +69,39 @@ export function ProjectContent({
           title={name}
           className="w-full"
         ></iframe>
+      </div>
+      <div className="pl-4">
+        {content.map((contentPiece, index, contentArray) => (
+          <div
+            className={twMerge(
+              contentArray.length === 0
+                ? ""
+                : index === contentArray.length - 1
+                  ? "mt-6"
+                  : "my-6",
+            )}
+          >
+            {contentPiece.type === ProjectContentType.HEADER ? (
+              <Header className="mb-4" size="xl" headerLevel={3}>
+                <ChevronRightIcon className="inline" /> {contentPiece.text}
+              </Header>
+            ) : contentPiece.type === ProjectContentType.TEXT ? (
+              <p>{contentPiece.text}</p>
+            ) : contentPiece.type === ProjectContentType.ORDERED_LIST ? (
+              <ol className="list-decimal">
+                {contentPiece.listElements.map((listElement) => (
+                  <li className="mb-1">{listElement}</li>
+                ))}
+              </ol>
+            ) : contentPiece.type === ProjectContentType.UNORDERED_LIST ? (
+              <ul className="list-disc">
+                {contentPiece.listElements.map((listElement) => (
+                  <li className="mb-1">{listElement}</li>
+                ))}
+              </ul>
+            ) : null}
+          </div>
+        ))}
       </div>
     </section>
   );
