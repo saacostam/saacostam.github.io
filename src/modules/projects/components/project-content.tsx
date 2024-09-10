@@ -30,11 +30,10 @@ export function ProjectContent({
 
   return (
     <section key={id} className={className}>
-      <Header className="text-center mb-4" size="2xl" headerLevel={2}>
+      <Header className="text-center mb-6" size="2xl" headerLevel={2}>
         {name}
       </Header>
-      <p className="mb-4">{description}</p>
-      <div className="flex flex-wrap mb-4">
+      <div className="flex flex-wrap justify-center mb-6">
         <a
           href={url}
           target="_blank"
@@ -50,6 +49,7 @@ export function ProjectContent({
           <GithubIcon className="inline" /> Code
         </a>
       </div>
+      <p className="mb-4">{description}</p>
       {viewPortIssues.length > 0 ? (
         <ViewportAlert viewPortIssues={viewPortIssues} />
       ) : null}
