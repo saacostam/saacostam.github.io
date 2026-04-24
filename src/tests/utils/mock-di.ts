@@ -1,24 +1,14 @@
 import type { IAdapters } from "@/shared/adapters/core/domain";
-import type { ISession } from "@/shared/adapters/session/domain";
 import { IThemeVariant } from "@/shared/adapters/theme/domain";
 import type { IClients } from "@/shared/clients/domain";
 
-export function mockDi(overrides?: {
-	adapters?: {
-		sessionAdapter?: {
-			session?: ISession;
-		};
-	};
-}) {
+export function mockDi() {
 	const clients = {
 		todoClient: {
 			createTodo: vi.fn(),
 			deleteTodo: vi.fn(),
 			patchTodo: vi.fn(),
 			queryTodos: vi.fn(),
-		},
-		loginClient: {
-			login: vi.fn(),
 		},
 	} satisfies IClients;
 
@@ -43,14 +33,6 @@ export function mockDi(overrides?: {
 		},
 		notificationAdapter: {
 			notify: vi.fn(),
-		},
-		sessionAdapter: {
-			session: overrides?.adapters?.sessionAdapter?.session ?? {
-				type: "authenticated",
-				token: "token",
-			},
-			removeToken: vi.fn(),
-			setToken: vi.fn(),
 		},
 		themeAdapter: {
 			theme: IThemeVariant.LIGHT,

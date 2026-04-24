@@ -1,5 +1,4 @@
 import { type PropsWithChildren, useMemo } from "react";
-import { useNavigate } from "react-router";
 import { useMockAnalyticsProvider } from "@/shared/adapters/analytics/infra";
 import { AdaptersContext } from "@/shared/adapters/core/app";
 import type { IAdapters } from "@/shared/adapters/core/domain";
@@ -7,10 +6,8 @@ import { useMockErrorMonitoringAdapter } from "@/shared/adapters/error-monitorin
 import { HttpFetcherAdapter } from "@/shared/adapters/fetcher/infra";
 import { useNotificationAdapter } from "@/shared/adapters/notification/infra";
 import { useLocalStoragePersistenceAdapter } from "@/shared/adapters/persistence/infra";
-import { usePersistanceSessionAdapter } from "@/shared/adapters/session/infra";
 import { useThemeAdapterImpl } from "@/shared/adapters/theme/infra";
 import { useUuidAdapter } from "@/shared/adapters/uuid/infra";
-import { genRoute, RouteName } from "@/shared/router/app";
 
 /**
  * Provider component to supply application adapters to the component tree.
@@ -43,8 +40,6 @@ export function AdaptersProvider({ children }: PropsWithChildren) {
  * @returns {JSX.Element} A context provider that wraps the children with injected adapters.
  */
 function AdaptersProviderDependencyInjection({ children }: PropsWithChildren) {
-	const nav = useNavigate();
-
 	const persistenceAdapter = useLocalStoragePersistenceAdapter();
 	const uuidAdapter = useUuidAdapter();
 
@@ -53,33 +48,19 @@ function AdaptersProviderDependencyInjection({ children }: PropsWithChildren) {
 	const notificationAdapter = useNotificationAdapter({
 		uuidAdapter,
 	});
-	const sessionAdapter = usePersistanceSessionAdapter(persistenceAdapter);
 	const themeAdapter = useThemeAdapterImpl();
 
 	const fetcherAdapter = useMemo(
 		() =>
-			new HttpFetcherAdapter(
-				{
-					onUnauthorized: async () => {
-						sessionAdapter.removeToken();
-						await nav(
-							genRoute({
-								name: RouteName.HOME,
-							}),
-						);
-					},
-				},
-				{
-					baseUrl: import.meta.env.VITE_API_URL,
-				},
-			),
-		[nav, sessionAdapter],
+			new HttpFetcherAdapter(undefined, {
+				baseUrl: import.meta.env.VITE_API_URL,
+			}),
+		[],
 	);
 
 	const adapters: IAdapters = useMemo(
 		() => ({
 			analyticsAdapter,
-			sessionAdapter,
 			errorMonitoringAdapter,
 			fetcherAdapter,
 			notificationAdapter,
@@ -93,7 +74,6 @@ function AdaptersProviderDependencyInjection({ children }: PropsWithChildren) {
 			fetcherAdapter,
 			notificationAdapter,
 			persistenceAdapter,
-			sessionAdapter,
 			themeAdapter,
 			uuidAdapter,
 		],

@@ -1,17 +1,15 @@
 import {
 	AppShell,
 	Burger,
-	Button,
 	Container,
 	Flex,
 	Group,
 	UnstyledButton,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
-import { type PropsWithChildren, useCallback, useMemo } from "react";
+import { type PropsWithChildren, useMemo } from "react";
 import { Link } from "react-router";
 import { ThemeToggle } from "@/features/theme/ui";
-import { useAdapters } from "@/shared/adapters/core/app";
 import { Logo } from "@/shared/components";
 import { genRoute, RouteName } from "@/shared/router/app";
 
@@ -21,8 +19,6 @@ const MAIN_LINKS: {
 }[] = [] as const;
 
 export function AppLayout({ children }: PropsWithChildren) {
-	const { sessionAdapter } = useAdapters();
-
 	const [opened, { toggle }] = useDisclosure();
 
 	const links = useMemo(
@@ -34,11 +30,6 @@ export function AppLayout({ children }: PropsWithChildren) {
 				label,
 			})),
 		[],
-	);
-
-	const onClickLogout = useCallback(
-		() => sessionAdapter.removeToken(),
-		[sessionAdapter.removeToken],
 	);
 
 	return (
@@ -71,7 +62,6 @@ export function AppLayout({ children }: PropsWithChildren) {
 									</UnstyledButton>
 								))}
 							</Group>
-							<Button onClick={onClickLogout}>Logout</Button>
 							<ThemeToggle />
 						</Flex>
 					</Group>
