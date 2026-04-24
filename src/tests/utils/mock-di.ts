@@ -4,11 +4,8 @@ import type { IClients } from "@/shared/clients/domain";
 
 export function mockDi() {
 	const clients = {
-		todoClient: {
-			createTodo: vi.fn(),
-			deleteTodo: vi.fn(),
-			patchTodo: vi.fn(),
-			queryTodos: vi.fn(),
+		project: {
+			getAll: vi.fn(),
 		},
 	} satisfies IClients;
 

@@ -1,5 +1,5 @@
 import { type PropsWithChildren, useMemo } from "react";
-import { useTodoClient } from "@/features/todo/infra";
+import { useProjectClient } from "@/features/project/infra";
 import { ClientsContext } from "../app";
 import type { IClients } from "../domain";
 
@@ -14,13 +14,13 @@ import type { IClients } from "../domain";
  * @returns {JSX.Element} A context provider wrapping the children with available clients.
  */
 export function ClientsProvider({ children }: PropsWithChildren) {
-	const todoClient = useTodoClient();
+	const projectClient = useProjectClient();
 
 	const clients: IClients = useMemo(
 		() => ({
-			todoClient,
+			project: projectClient,
 		}),
-		[todoClient],
+		[projectClient],
 	);
 
 	return (

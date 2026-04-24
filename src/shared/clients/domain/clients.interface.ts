@@ -1,8 +1,8 @@
-import type { ITodoClient } from "@/features/todo/domain";
+import type { IProjectClient } from "@/features/project/domain";
 
 /**
  * Interface for managing various application clients.
  */
 export interface IClients {
-	todoClient: ITodoClient;
+	project: IProjectClient;
 }
