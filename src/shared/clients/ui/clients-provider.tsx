@@ -1,5 +1,5 @@
 import { type PropsWithChildren, useMemo } from "react";
-import { useProjectClient } from "@/features/project/infra";
+import { useProjectClient } from "@/features/project/core/infra";
 import { ClientsContext } from "../app";
 import type { IClients } from "../domain";
 
