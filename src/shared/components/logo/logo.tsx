@@ -1,5 +1,5 @@
 import { Flex, Text, ThemeIcon, Tooltip } from "@mantine/core";
-import { FireIcon } from "@/shared/icons";
+import { CommandLineIcon } from "@/shared/icons";
 
 export function Logo() {
 	return (
@@ -9,10 +9,10 @@ export function Logo() {
 				size="lg"
 				color="var(--mantine-primary-color-5)"
 			>
-				<FireIcon />
+				<CommandLineIcon />
 			</ThemeIcon>
 			<Tooltip label="Santiago Acosta">
-				<Text c="var(--mantine-primary-color-5)" fw="bold" size="xl">
+				<Text fw="bold" size="xl">
 					saacostam
 				</Text>
 			</Tooltip>

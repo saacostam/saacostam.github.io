@@ -1,5 +1,5 @@
 export enum QueryKeys {
-	QUERY_TODOS = "Query Todos",
+	QUERY_PROJECTS = "Query Projects",
 }
 
 export enum MutationKeys {
