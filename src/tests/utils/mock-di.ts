@@ -23,6 +23,9 @@ export function mockDi() {
 			patch: vi.fn(),
 			delete: vi.fn(),
 		},
+		intersectionObserver: {
+			useOnInView: vi.fn(),
+		},
 		persistenceAdapter: {
 			get: vi.fn(),
 			set: vi.fn(),
