@@ -1,7 +1,7 @@
 import type { CSSProperties } from "react";
 
 export interface BaseIconProps {
-	height?: number;
-	width?: number;
+	height?: number | string;
+	width?: number | string;
 	style?: CSSProperties;
 }
