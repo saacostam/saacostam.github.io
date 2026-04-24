@@ -1,4 +1,4 @@
-import { Flex, Text, ThemeIcon } from "@mantine/core";
+import { Flex, Text, ThemeIcon, Tooltip } from "@mantine/core";
 import { FireIcon } from "@/shared/icons";
 
 export function Logo() {
@@ -11,13 +11,11 @@ export function Logo() {
 			>
 				<FireIcon />
 			</ThemeIcon>
-			<Text fw="bold" size="xl">
-				<span style={{ color: "var(--mantine-primary-color-5)" }}>Clean</span>{" "}
-				React{" "}
-				<span style={{ color: "var(--mantine-primary-color-5)" }}>
-					Template
-				</span>
-			</Text>
+			<Tooltip label="Santiago Acosta">
+				<Text c="var(--mantine-primary-color-5)" fw="bold" size="xl">
+					saacostam
+				</Text>
+			</Tooltip>
 		</Flex>
 	);
 }
