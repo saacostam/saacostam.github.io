@@ -43,29 +43,36 @@ export function AppLayout({ children }: PropsWithChildren) {
 			padding="md"
 		>
 			<AppShell.Header>
-				<Group h="100%" px="md">
-					<Burger opened={opened} onClick={toggle} hiddenFrom="sm" size="sm" />
-					<Group justify="space-between" style={{ flex: 1 }}>
-						<UnstyledButton
-							component={Link}
-							to={genRoute({
-								name: RouteName.HOME,
-							})}
-						>
-							<Logo />
-						</UnstyledButton>
-						<Flex gap="lg">
-							<Group gap="lg" visibleFrom="sm">
-								{links.map(({ href, label }) => (
-									<UnstyledButton component={Link} key={href} to={href}>
-										{label}
-									</UnstyledButton>
-								))}
-							</Group>
-							<ThemeToggle />
-						</Flex>
+				<Container size="xl" h="100%">
+					<Group h="100%" px="md">
+						<Burger
+							opened={opened}
+							onClick={toggle}
+							hiddenFrom="sm"
+							size="sm"
+						/>
+						<Group justify="space-between" style={{ flex: 1 }}>
+							<UnstyledButton
+								component={Link}
+								to={genRoute({
+									name: RouteName.HOME,
+								})}
+							>
+								<Logo />
+							</UnstyledButton>
+							<Flex gap="lg">
+								<Group gap="lg" visibleFrom="sm">
+									{links.map(({ href, label }) => (
+										<UnstyledButton component={Link} key={href} to={href}>
+											{label}
+										</UnstyledButton>
+									))}
+								</Group>
+								<ThemeToggle />
+							</Flex>
+						</Group>
 					</Group>
-				</Group>
+				</Container>
 			</AppShell.Header>
 
 			<AppShell.Navbar py="md" px="lg">
