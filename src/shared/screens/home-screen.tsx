@@ -1,5 +1,10 @@
-import { ProjectInfiniteScroll } from "@/features/project/infinite-scroll/ui";
+import { Flex } from "@mantine/core";
+import { Hero } from "@/features/hero/ui";
 
 export default function HomeScreen() {
-	return <ProjectInfiniteScroll />;
+	return (
+		<Flex direction="column" gap="lg">
+			<Hero />
+		</Flex>
+	);
 }

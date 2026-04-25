@@ -43,8 +43,8 @@ export function AppLayout({ children }: PropsWithChildren) {
 			padding="md"
 		>
 			<AppShell.Header>
-				<Container size="xl" h="100%">
-					<Group h="100%" px="md">
+				<Container size="lg" h="100%">
+					<Group h="100%">
 						<Burger
 							opened={opened}
 							onClick={toggle}
@@ -84,7 +84,9 @@ export function AppLayout({ children }: PropsWithChildren) {
 			</AppShell.Navbar>
 
 			<AppShell.Main>
-				<Container mx="auto">{children}</Container>
+				<Container size="lg" mx="auto">
+					{children}
+				</Container>
 			</AppShell.Main>
 		</AppShell>
 	);
