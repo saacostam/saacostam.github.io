@@ -18,7 +18,7 @@ export const PROJECTS: IProject[] = [
 	{
 		id: "tune-code",
 		name: "TuneCode: Musical Programming Language",
-		rating: 4.5,
+		rating: 4.4,
 		category: [ProjectCategory.MusicSoftware],
 		description:
 			"TuneCode is a web-based programming language tailored for music creation, designed for users familiar with Digital Audio Workstations (DAWs). By using familiar DAW-like concepts, TuneCode enables users to create and manipulate music directly through code. It allows the playback of melodies using basic oscillators, the scheduling of audio samples, and the application of effects to craft rich soundscapes. TuneCode bridges the gap between music production and coding, offering a new, flexible way to explore musical creativity.",
