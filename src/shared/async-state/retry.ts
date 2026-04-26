@@ -2,9 +2,9 @@ import { useMemo } from "react";
 
 export interface IRetry {
 	onClick: () => void;
-	isPending: boolean;
+	isLoading: boolean;
 }
 
-export function useRetry(onClick: () => void, isPending: boolean): IRetry {
-	return useMemo(() => ({ onClick, isPending }), [onClick, isPending]);
+export function useRetry(onClick: () => void, isLoading: boolean): IRetry {
+	return useMemo(() => ({ onClick, isLoading }), [onClick, isLoading]);
 }
