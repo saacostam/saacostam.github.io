@@ -2,7 +2,7 @@ import { Flex, UnstyledButton } from "@mantine/core";
 import type { InfiniteData } from "@tanstack/react-query";
 import { Link } from "react-router";
 import type { IProjectClientPayload } from "@/features/project/core/domain";
-import { ProjectItem } from "./ProjectItem";
+import { ProjectItem } from "@/features/project/core/ui";
 
 export interface ProjectInfiniteScrollContentProps {
 	projects: InfiniteData<IProjectClientPayload["GetAllResponse"]>;
