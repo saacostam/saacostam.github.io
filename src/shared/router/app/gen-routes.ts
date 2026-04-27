@@ -1,3 +1,5 @@
+import type { IProjectCategory } from "@/features/project/core/domain";
+
 /**
  * Represents all valid application route identifiers.
  *
@@ -21,6 +23,9 @@ export type GenerateRouteAction =
 	  }
 	| {
 			name: RouteName.PROJECTS;
+			payload?: {
+				categories?: IProjectCategory[] | null;
+			};
 	  };
 
 /**
@@ -43,6 +48,12 @@ export function genRoute(action: GenerateRouteAction): string {
 			return "/";
 		}
 		case RouteName.PROJECTS: {
+			const params = new URLSearchParams();
+
+			action.payload?.categories?.forEach((cat) => {
+				params.append("category", cat);
+			});
+
 			return "/projects";
 		}
 	}
