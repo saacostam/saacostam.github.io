@@ -21,7 +21,7 @@ export interface IProject {
 	/**
 	 * Category of the project. Used for filtering
 	 */
-	category: ProjectCategory[];
+	category: IProjectCategory[];
 
 	/**
 	 * A small-size image (300x150) for a project.
@@ -52,7 +52,7 @@ export interface IProject {
 	};
 }
 
-export enum ProjectCategory {
+export enum IProjectCategory {
 	SoftwareEngineering = "Software Engineering",
 	MusicSoftware = "Music Software",
 	Games = "Games",

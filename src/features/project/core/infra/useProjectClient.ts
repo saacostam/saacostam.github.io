@@ -1,23 +1,34 @@
 import { useCallback, useMemo } from "react";
 import type { IProject, IProjectClient } from "@/features/project/core/domain";
-import { PROJECTS } from "@/features/project/core/infra/project-data";
+import { StringUtils } from "@/shared/utils/string";
+import { PROJECTS } from "./project-data";
 
 const descendingOrder = (a: IProject, b: IProject) => b.rating - a.rating;
+const ALL_CATEGORIES = StringUtils.dedupe(PROJECTS.flatMap((p) => p.category));
 
 export function useProjectClient(): IProjectClient {
 	const getAll: IProjectClient["getAll"] = useCallback(
-		async ({ page, limit }) => {
-			const sortedProjects = [...PROJECTS].sort(descendingOrder);
+		async ({ categories, page, limit }) => {
+			const categoriesToInclude =
+				categories && categories.length > 0 ? categories : ALL_CATEGORIES;
+
+			const projectFilter = (project: IProject): boolean =>
+				!!categoriesToInclude.find((filterCategory) =>
+					project.category.includes(filterCategory),
+				);
+
+			const _sortedProjects = [...PROJECTS].sort(descendingOrder);
+			const filteredProjects = _sortedProjects.filter(projectFilter);
 
 			const start = (page - 1) * limit;
 			const end = start + limit;
 
-			const elements = sortedProjects.slice(start, end);
+			const elements = filteredProjects.slice(start, end);
 
 			return {
 				page,
 				elements,
-				total: sortedProjects.length,
+				total: filteredProjects.length,
 				limit,
 			};
 		},
