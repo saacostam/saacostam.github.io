@@ -1,3 +1,4 @@
+export * from "./adjustments-vertical.icon";
 export * from "./command-line.icon";
 export * from "./cube-transparent.icon";
 export * from "./exclamation-circle.icon";
