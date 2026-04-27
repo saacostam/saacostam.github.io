@@ -16,8 +16,8 @@ export function TopProjects() {
 	return (
 		<Flex direction="column" gap="lg">
 			<Box>
-				<Title size="h2">Top Projects</Title>
-				<Text c="dimmed">
+				<Title size="h3">Top Projects</Title>
+				<Text c="dimmed" size="sm">
 					Selected projects that highlight my approach to building and
 					problem-solving.
 				</Text>
