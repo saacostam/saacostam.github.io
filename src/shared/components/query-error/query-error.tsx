@@ -31,7 +31,7 @@ export function QueryError({
 		<Alert color="red" icon={<ExclamationCircleIcon />} title={title}>
 			{msg}
 			<Flex justify="end">
-				<Button color="red" loading={retry.isPending} onClick={retry.onClick}>
+				<Button color="red" loading={retry.isLoading} onClick={retry.onClick}>
 					Retry
 				</Button>
 			</Flex>

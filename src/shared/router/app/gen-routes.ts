@@ -6,6 +6,7 @@
  */
 export enum RouteName {
 	HOME = "HOME",
+	PROJECTS = "PROJECTS",
 }
 
 /**
@@ -14,9 +15,13 @@ export enum RouteName {
  * This is modeled as a discriminated union (expandable),
  * allowing each route to define its own required parameters.
  */
-export type GenerateRouteAction = {
-	name: RouteName.HOME;
-};
+export type GenerateRouteAction =
+	| {
+			name: RouteName.HOME;
+	  }
+	| {
+			name: RouteName.PROJECTS;
+	  };
 
 /**
  * Generates a URL path from a route action.
@@ -36,6 +41,9 @@ export function genRoute(action: GenerateRouteAction): string {
 	switch (action.name) {
 		case RouteName.HOME: {
 			return "/";
+		}
+		case RouteName.PROJECTS: {
+			return "/projects";
 		}
 	}
 }

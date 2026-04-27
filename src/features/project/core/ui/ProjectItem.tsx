@@ -8,8 +8,12 @@ export interface ProjectItemProps {
 export function ProjectItem({ project }: ProjectItemProps) {
 	return (
 		<Card withBorder>
-			<Flex direction="row" gap="md">
-				{project.image && <Image src={project.image} w="360" />}
+			<Flex
+				align={{ base: "center", sm: "inherit" }}
+				direction={{ base: "column", sm: "row" }}
+				gap="md"
+			>
+				{project.image && <Image src={project.image} w="360" h="180" />}
 				<Box flex="1" miw="0">
 					<Title c="indigo" size="h4">
 						{project.name}

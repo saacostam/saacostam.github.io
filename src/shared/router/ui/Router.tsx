@@ -12,6 +12,7 @@ import { genRoute, RouteName } from "@/shared/router/app";
 // Lazy imports
 const ErrorScreen = lazy(() => import("@/shared/screens/error-screen"));
 const HomeScreen = lazy(() => import("@/shared/screens/home-screen"));
+const ProjectsScreen = lazy(() => import("@/shared/screens/projects-screen"));
 
 export interface RouterProps {
 	Provider: JSXElementConstructor<PropsWithChildren>;
@@ -22,15 +23,15 @@ export function Router({ Provider }: RouterProps) {
 		<Provider>
 			<Suspense fallback={<SuspenseLoader style={{ height: "100vh" }} />}>
 				<Routes>
-					<Route element={<Outlet />}>
-						<Route
-							index
-							element={
-								<AppLayout>
-									<HomeScreen />
-								</AppLayout>
-							}
-						/>
+					<Route
+						element={
+							<AppLayout>
+								<Outlet />
+							</AppLayout>
+						}
+					>
+						<Route index element={<HomeScreen />} />
+						<Route path="projects" element={<ProjectsScreen />} />
 					</Route>
 					<Route
 						path="*"
