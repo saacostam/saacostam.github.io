@@ -1,4 +1,4 @@
-import { Box, Card, Flex, Image, Space, Text, Title } from "@mantine/core";
+import { Box, Flex, Image, Paper, Space, Text, Title } from "@mantine/core";
 import type { IProject } from "@/features/project/core/domain";
 
 export interface ProjectItemProps {
@@ -7,21 +7,19 @@ export interface ProjectItemProps {
 
 export function ProjectItem({ project }: ProjectItemProps) {
 	return (
-		<Card withBorder>
-			<Flex
-				align={{ base: "center", sm: "inherit" }}
-				direction={{ base: "column", sm: "row" }}
-				gap="md"
-			>
-				{project.image && <Image src={project.image} w="360" h="180" />}
+		<Paper p="md" withBorder>
+			<Flex align="center" direction="column" gap="md">
+				<Title c="indigo" size="h4">
+					{project.name}
+				</Title>
+				{project.image && <Image src={project.image} maw="360" mah="180" />}
 				<Box flex="1" miw="0">
-					<Title c="indigo" size="h4">
-						{project.name}
-					</Title>
-					<Space h="md" />
-					<Text size="sm">{project.description}</Text>
+					<Space h="sm" />
+					<Text c="dimmed" lineClamp={3} size="sm">
+						{project.description}
+					</Text>
 				</Box>
 			</Flex>
-		</Card>
+		</Paper>
 	);
 }

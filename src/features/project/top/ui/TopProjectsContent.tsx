@@ -1,4 +1,4 @@
-import { Flex, UnstyledButton } from "@mantine/core";
+import { Grid, GridCol, UnstyledButton } from "@mantine/core";
 import { Link } from "react-router";
 import type { IProject } from "@/features/project/core/domain";
 import { ProjectItem } from "@/features/project/core/ui";
@@ -9,12 +9,14 @@ export interface TopProjectsContentProps {
 
 export function TopProjectsContent({ topProjects }: TopProjectsContentProps) {
 	return (
-		<Flex direction="column" gap="xs">
+		<Grid gutter="md">
 			{topProjects.map((project) => (
-				<UnstyledButton key={project.id} component={Link} to={"#"}>
-					<ProjectItem key={project.id} project={project} />
-				</UnstyledButton>
+				<GridCol key={project.id} span={{ base: 12, sm: 6 }}>
+					<UnstyledButton component={Link} to={"#"}>
+						<ProjectItem project={project} />
+					</UnstyledButton>
+				</GridCol>
 			))}
-		</Flex>
+		</Grid>
 	);
 }
