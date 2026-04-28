@@ -45,7 +45,7 @@ export function ProjectInfiniteScroll() {
 				queryAllProjects.fetchNextPage();
 			}
 		},
-		{ root: null, rootMargin: "50px", threshold: 0.05 },
+		{ root: null, rootMargin: "200px", threshold: 0.1 },
 	);
 
 	return (
