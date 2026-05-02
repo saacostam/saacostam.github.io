@@ -25,7 +25,7 @@ export function Hero() {
 						Full Stack Software Engineer
 					</Text>
 				</Box>
-				<Text size="lg">
+				<Text size="md">
 					Full-stack engineer focused on{" "}
 					<Text c="indigo" component="span" inherit fw="bold">
 						TypeScript
@@ -44,7 +44,7 @@ export function Hero() {
 					<Button
 						component={Link}
 						leftSection={<PuzzlePieceIcon height="1.2rem" width="1.2rem" />}
-						size="md"
+						size="sm"
 						to={genRoute({ name: RouteName.PROJECTS })}
 					>
 						My Projects
@@ -52,7 +52,7 @@ export function Hero() {
 					<Button
 						component="a"
 						href="https://github.com/saacostam"
-						size="md"
+						size="sm"
 						target="_blank"
 						variant="outline"
 					>

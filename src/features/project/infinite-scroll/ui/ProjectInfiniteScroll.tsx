@@ -1,4 +1,4 @@
-import { Button, Flex, Paper, Space, Text, Title } from "@mantine/core";
+import { Box, Button, Flex, Paper, Space, Text, Title } from "@mantine/core";
 import { useCallback } from "react";
 import { useQueryAllProjects } from "@/features/project/core/app";
 import { IProjectCategory } from "@/features/project/core/domain";
@@ -50,11 +50,16 @@ export function ProjectInfiniteScroll() {
 
 	return (
 		<Flex direction="column" gap="lg">
-			<Title size="h3">Projects</Title>
+			<Box>
+				<Title size="h3">Projects</Title>
+				<Text c="dimmed" size="sm">
+					Projects showcasing my work across different technologies and domains.
+				</Text>
+			</Box>
 			<Paper p="md" withBorder>
-				<Text size="sm">
+				<Text fw="bold" size="md">
 					<Flex align="center" direction="row" gap="0.25rem">
-						<AdjustmentsVertical height="1rem" width="1rem" />
+						<AdjustmentsVertical height="1.25rem" width="1.25rem" />
 						<span>Categories:</span>
 					</Flex>
 				</Text>
@@ -75,7 +80,7 @@ export function ProjectInfiniteScroll() {
 							<Button
 								key={c}
 								onClick={() => onClickCategoryFilter(c)}
-								size="xs"
+								size="sm"
 								style={{ flexShrink: 0 }}
 								variant={categories.includes(c) ? "filled" : "outline"}
 							>
@@ -87,7 +92,7 @@ export function ProjectInfiniteScroll() {
 						<Button
 							color="red"
 							onClick={onClickResetCategoryFilter}
-							size="xs"
+							size="sm"
 							variant="subtle"
 						>
 							Clear

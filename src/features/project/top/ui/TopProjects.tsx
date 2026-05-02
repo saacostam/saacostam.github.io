@@ -39,7 +39,7 @@ export function TopProjects() {
 			<Button
 				component={Link}
 				leftSection={<PuzzlePieceIcon height="1.2rem" width="1.2rem" />}
-				size="md"
+				size="sm"
 				to={genRoute({ name: RouteName.PROJECTS })}
 			>
 				More Projects
