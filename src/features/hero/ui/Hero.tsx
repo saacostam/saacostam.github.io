@@ -21,7 +21,7 @@ export function Hero() {
 			<Flex direction="column" gap="md" flex="1">
 				<Box>
 					<Title size="2.4rem">Santiago Acosta Meza</Title>
-					<Text c="indigo" fw="bold" lh="1.6rem" size="1.5rem">
+					<Text c="indigo" fw="bold" lh="1.3rem" size="1.25rem">
 						Full Stack Software Engineer
 					</Text>
 				</Box>
