@@ -3,6 +3,7 @@ import type { IProject, IProjectClient } from "@/features/project/core/domain";
 import { DomainError, DomainErrorType } from "@/shared/errors/domain";
 import { StringUtils } from "@/shared/utils/string";
 import { PROJECTS } from "./project-data";
+import { projectRecommendationsService } from "./project-recommendations-service";
 
 const descendingOrder = (a: IProject, b: IProject) => b.rating - a.rating;
 const ALL_CATEGORIES = StringUtils.dedupe(PROJECTS.flatMap((p) => p.category));
@@ -51,6 +52,30 @@ export function useProjectClient(): IProjectClient {
 		};
 	}, []);
 
+	const getRelatedProjects: IProjectClient["getRelatedProjects"] = useCallback(
+		async ({ projectId }) => {
+			const AMOUNT_OF_RECOMMENDATIONS = 3;
+
+			const project = PROJECTS.find((p) => p.id === projectId);
+
+			if (!project)
+				throw new DomainError({
+					type: DomainErrorType.NOT_FOUND,
+					userMsg: "Project not found",
+					msg: `[useProjectClient.getById] Project not found`,
+				});
+
+			return {
+				relatedProjects: projectRecommendationsService.findClosestNProjects(
+					project,
+					PROJECTS,
+					AMOUNT_OF_RECOMMENDATIONS,
+				),
+			};
+		},
+		[],
+	);
+
 	const getTopProjects: IProjectClient["getTopProjects"] =
 		useCallback(async () => {
 			const sorterProjects = [...PROJECTS].sort(descendingOrder);
@@ -62,8 +87,9 @@ export function useProjectClient(): IProjectClient {
 		() => ({
 			getAll,
 			getById,
+			getRelatedProjects,
 			getTopProjects,
 		}),
-		[getAll, getById, getTopProjects],
+		[getAll, getById, getRelatedProjects, getTopProjects],
 	);
 }
