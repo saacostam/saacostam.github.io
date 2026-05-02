@@ -1,5 +1,6 @@
 import { useCallback, useMemo } from "react";
 import type { IProject, IProjectClient } from "@/features/project/core/domain";
+import { DomainError, DomainErrorType } from "@/shared/errors/domain";
 import { StringUtils } from "@/shared/utils/string";
 import { PROJECTS } from "./project-data";
 
@@ -35,6 +36,21 @@ export function useProjectClient(): IProjectClient {
 		[],
 	);
 
+	const getById: IProjectClient["getById"] = useCallback(async ({ id }) => {
+		const project = PROJECTS.find((p) => p.id === id);
+
+		if (!project)
+			throw new DomainError({
+				type: DomainErrorType.NOT_FOUND,
+				userMsg: "Project not found",
+				msg: `[useProjectClient.getById] Project not found`,
+			});
+
+		return {
+			project,
+		};
+	}, []);
+
 	const getTopProjects: IProjectClient["getTopProjects"] =
 		useCallback(async () => {
 			const sorterProjects = [...PROJECTS].sort(descendingOrder);
@@ -45,8 +61,9 @@ export function useProjectClient(): IProjectClient {
 	return useMemo(
 		() => ({
 			getAll,
+			getById,
 			getTopProjects,
 		}),
-		[getAll, getTopProjects],
+		[getAll, getById, getTopProjects],
 	);
 }

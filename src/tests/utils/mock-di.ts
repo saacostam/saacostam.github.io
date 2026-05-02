@@ -6,6 +6,7 @@ export function mockDi() {
 	const clients = {
 		project: {
 			getAll: vi.fn(),
+			getById: vi.fn(),
 			getTopProjects: vi.fn(),
 		},
 	} satisfies IClients;

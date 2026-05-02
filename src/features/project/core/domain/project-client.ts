@@ -7,6 +7,9 @@ export interface IProjectClient {
 	getAll(
 		req: IProjectClientPayload["GetAllRequest"],
 	): Promise<IProjectClientPayload["GetAllResponse"]>;
+	getById(
+		req: IProjectClientPayload["GetByIdRequest"],
+	): Promise<IProjectClientPayload["GetByIdResponse"]>;
 	getTopProjects(): Promise<IProjectClientPayload["GetTopProjectsResponse"]>;
 }
 
@@ -26,6 +29,13 @@ export interface IProjectClientPayload {
 		limit: number;
 		page: number;
 		total: number;
+	};
+
+	GetByIdRequest: {
+		id: string;
+	};
+	GetByIdResponse: {
+		project: IProject;
 	};
 
 	GetTopProjectsResponse: IProject[];
