@@ -9,6 +9,7 @@ import type { IProjectCategory } from "@/features/project/core/domain";
 export enum RouteName {
 	HOME = "HOME",
 	PROJECTS = "PROJECTS",
+	PROJECT_BY_ID = "PROJECT_BY_ID",
 }
 
 /**
@@ -25,6 +26,12 @@ export type GenerateRouteAction =
 			name: RouteName.PROJECTS;
 			payload?: {
 				categories?: IProjectCategory[] | null;
+			};
+	  }
+	| {
+			name: RouteName.PROJECT_BY_ID;
+			payload: {
+				id: string;
 			};
 	  };
 
@@ -55,6 +62,9 @@ export function genRoute(action: GenerateRouteAction): string {
 			});
 
 			return "/projects";
+		}
+		case RouteName.PROJECT_BY_ID: {
+			return `/p/${action.payload.id}`;
 		}
 	}
 }

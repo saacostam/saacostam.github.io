@@ -14,7 +14,7 @@ import { Logo } from "@/shared/components";
 import { genRoute, RouteName } from "@/shared/router/app";
 
 const MAIN_LINKS: {
-	name: RouteName;
+	name: RouteName.PROJECTS;
 	label: string;
 }[] = [] as const;
 

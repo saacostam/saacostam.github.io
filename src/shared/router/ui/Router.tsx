@@ -13,6 +13,9 @@ import { genRoute, RouteName } from "@/shared/router/app";
 const ErrorScreen = lazy(() => import("@/shared/screens/error-screen"));
 const HomeScreen = lazy(() => import("@/shared/screens/home-screen"));
 const ProjectsScreen = lazy(() => import("@/shared/screens/projects-screen"));
+const ProjectByIdScreen = lazy(
+	() => import("@/shared/screens/project-by-id-screen"),
+);
 
 export interface RouterProps {
 	Provider: JSXElementConstructor<PropsWithChildren>;
@@ -32,6 +35,7 @@ export function Router({ Provider }: RouterProps) {
 					>
 						<Route index element={<HomeScreen />} />
 						<Route path="projects" element={<ProjectsScreen />} />
+						<Route path="p/:id" element={<ProjectByIdScreen />} />
 					</Route>
 					<Route
 						path="*"
