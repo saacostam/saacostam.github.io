@@ -1,4 +1,5 @@
-import { Button, Flex, Image, Text, Title } from "@mantine/core";
+import { Button, Flex, Image, Paper, Text, Title } from "@mantine/core";
+import { type PropsWithChildren, useCallback } from "react";
 import type { IProject } from "@/features/project/core/domain";
 
 export interface ProjectByIdContentProps {
@@ -6,6 +7,18 @@ export interface ProjectByIdContentProps {
 }
 
 export function ProjectByIdContent({ project }: ProjectByIdContentProps) {
+	const ImageClickWrapper = useCallback(
+		({ children }: PropsWithChildren) =>
+			project.url ? (
+				<a href={project.url} target="_blank">
+					{children}
+				</a>
+			) : (
+				children
+			),
+		[project.url],
+	);
+
 	return (
 		<Flex direction="column" gap="lg">
 			<Flex
@@ -19,7 +32,7 @@ export function ProjectByIdContent({ project }: ProjectByIdContentProps) {
 				<Flex direction="row" gap="md">
 					{project.url && (
 						<Button component="a" href={project.url} target="_blank">
-							Demo
+							View Live Demo
 						</Button>
 					)}
 					{project.repoUrl && (
@@ -27,7 +40,7 @@ export function ProjectByIdContent({ project }: ProjectByIdContentProps) {
 							component="a"
 							href={project.repoUrl}
 							target="_blank"
-							variant="outline"
+							variant="light"
 						>
 							Code
 						</Button>
@@ -37,7 +50,11 @@ export function ProjectByIdContent({ project }: ProjectByIdContentProps) {
 			<Text size="sm">{project.description}</Text>
 			{project.image && (
 				<Flex justify="center">
-					<Image maw="512px" radius="md" src={project.image} />
+					<Paper radius="md" withBorder>
+						<ImageClickWrapper>
+							<Image maw="512px" radius="md" src={project.image} />
+						</ImageClickWrapper>
+					</Paper>
 				</Flex>
 			)}
 		</Flex>
