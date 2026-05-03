@@ -10,6 +10,7 @@ export interface QueryErrorProps {
 	title?: string;
 	error: unknown;
 	where: string;
+	hidden?: boolean;
 }
 
 export function QueryError({
@@ -18,6 +19,7 @@ export function QueryError({
 	title: _title,
 	error,
 	where,
+	hidden = false,
 }: QueryErrorProps) {
 	const { errorMonitoringAdapter } = useAdapters();
 
@@ -26,6 +28,8 @@ export function QueryError({
 	useEffect(() => {
 		errorMonitoringAdapter.report(error, { where });
 	}, [error, errorMonitoringAdapter, where]);
+
+	if (hidden) return null;
 
 	return (
 		<Alert color="red" icon={<ExclamationCircleIcon />} title={title}>
