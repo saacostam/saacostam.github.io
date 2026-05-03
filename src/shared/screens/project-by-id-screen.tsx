@@ -1,7 +1,8 @@
-import { Anchor, Breadcrumbs, Flex, Text } from "@mantine/core";
+import { Anchor, Breadcrumbs, Divider, Flex, Text } from "@mantine/core";
 import { useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import { ProjectById } from "@/features/project/by-id/ui";
+import { RelatedProjects } from "@/features/project/related-projects/ui";
 import { useAdapters } from "@/shared/adapters/core/app";
 import { SuspenseLoader } from "@/shared/components";
 import { genRoute, RouteName } from "@/shared/router/app";
@@ -37,6 +38,8 @@ export default function ProjectByIdScreen() {
 				<Text c="indigo">Project</Text>
 			</Breadcrumbs>
 			<ProjectById id={id} />
+			<Divider mt="xl" />
+			<RelatedProjects id={id} />
 		</Flex>
 	);
 }
