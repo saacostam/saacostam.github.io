@@ -3,6 +3,8 @@ import { useCallback } from "react";
 import { useQueryAllProjects } from "@/features/project/core/app";
 import { IProjectCategory } from "@/features/project/core/domain";
 import { useAdapters } from "@/shared/adapters/core/app";
+import { useRetry } from "@/shared/async-state";
+import { QueryError } from "@/shared/components";
 import { AdjustmentsVertical } from "@/shared/icons";
 import { useEnumArraySearchParam } from "@/shared/router/app";
 import { ProjectInfiniteScrollContent } from "./ProjectInfiniteScrollContent";
@@ -35,6 +37,7 @@ export function ProjectInfiniteScroll() {
 	}, [setCategories]);
 
 	const queryAllProjects = useQueryAllProjects({ categories });
+	const retry = useRetry(queryAllProjects.refetch, queryAllProjects.isLoading);
 
 	const loadMoreRef = useOnInView(
 		(inView, entry) => {
@@ -104,6 +107,14 @@ export function ProjectInfiniteScroll() {
 				{queryAllProjects.isLoading && <ProjectInfiniteScrollSkeleton />}
 				{queryAllProjects.isSuccess && (
 					<ProjectInfiniteScrollContent projects={queryAllProjects.data} />
+				)}
+				{queryAllProjects.isError && (
+					<QueryError
+						msg="Unable to retrieve projects information"
+						retry={retry}
+						error={queryAllProjects.error}
+						where="ProjectInfiniteScroll.queryAllProjects.isError"
+					/>
 				)}
 				{/* Sentinel */}
 				<div ref={loadMoreRef} style={{ height: "1px" }} />
