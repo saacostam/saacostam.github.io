@@ -60,12 +60,12 @@ export function ProjectInfiniteScroll() {
 				</Text>
 			</Box>
 			<Paper p="md" withBorder>
-				<Text fw="bold" size="md">
-					<Flex align="center" direction="row" gap="0.25rem">
-						<AdjustmentsVertical height="1.25rem" width="1.25rem" />
+				<Flex align="center" direction="row" gap="0.25rem">
+					<AdjustmentsVertical height="1.25rem" width="1.25rem" />
+					<Text fw="bold" size="md">
 						<span>Categories:</span>
-					</Flex>
-				</Text>
+					</Text>
+				</Flex>
 				<Space h="xs" />
 				<Flex direction="row" gap="xs" justify="space-between" wrap="wrap">
 					{/* TODO: Move to Scroller when Mantine is updated to v9 */}
