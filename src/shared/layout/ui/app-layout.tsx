@@ -1,4 +1,5 @@
 import {
+	ActionIcon,
 	AppShell,
 	Burger,
 	Container,
@@ -10,10 +11,12 @@ import {
 import { useDisclosure } from "@mantine/hooks";
 import { type PropsWithChildren, useMemo } from "react";
 import { Link } from "react-router";
+import { GITHUB_LINK } from "@/features/networking/app";
 import { ThemeToggle } from "@/features/theme/ui";
 import { useAdapters } from "@/shared/adapters/core/app";
 import { IThemeVariant } from "@/shared/adapters/theme/domain";
 import { Logo } from "@/shared/components";
+import { GithubIcon } from "@/shared/icons";
 import { genRoute, RouteName } from "@/shared/router/app";
 import { Footer } from "./footer";
 
@@ -84,6 +87,21 @@ export function AppLayout({ children }: PropsWithChildren) {
 										{label}
 									</UnstyledButton>
 								))}
+								<ActionIcon
+									color="base"
+									component="a"
+									href={GITHUB_LINK}
+									size="lg"
+									variant="outline"
+									target="_blank"
+								>
+									<GithubIcon
+										style={{
+											height: "70%",
+											width: "70%",
+										}}
+									/>
+								</ActionIcon>
 								<ThemeToggle />
 							</Flex>
 						</Group>

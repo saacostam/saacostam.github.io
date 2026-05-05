@@ -1,4 +1,5 @@
 import {
+	ActionIcon,
 	Anchor,
 	Box,
 	Container,
@@ -6,6 +7,7 @@ import {
 	Flex,
 	Grid,
 	GridCol,
+	Group,
 	List,
 	ListItem,
 	Space,
@@ -14,6 +16,7 @@ import {
 } from "@mantine/core";
 import { useMemo } from "react";
 import { Link } from "react-router";
+import { NETWORKING_LINKS } from "@/features/networking/app";
 import { useAdapters } from "@/shared/adapters/core/app";
 import { IThemeVariant } from "@/shared/adapters/theme/domain";
 import { CommandLineIcon } from "@/shared/icons";
@@ -22,14 +25,6 @@ import { genRoute, RouteName } from "@/shared/router/app";
 const NAV_LINKS = [
 	{ label: "Home", name: RouteName.HOME },
 	{ label: "Projects", name: RouteName.PROJECTS },
-] as const;
-
-const NETWORKING_LINKS = [
-	{ label: "Github", href: "https://github.com/saacostam" },
-	{
-		label: "LinkedIn",
-		href: "https://www.linkedin.com/in/santiago-acosta-meza/?locale=en-US",
-	},
 ] as const;
 
 export function Footer() {
@@ -49,18 +44,17 @@ export function Footer() {
 
 	const networkingLinksContent = useMemo(
 		() =>
-			NETWORKING_LINKS.map(({ label, href }) => (
-				<ListItem key={href}>
-					<Anchor
-						c="dimmed"
-						component="a"
-						href={href}
-						size="sm"
-						target="_blank"
-					>
-						{label}
-					</Anchor>
-				</ListItem>
+			NETWORKING_LINKS.map(({ icon, href }) => (
+				<ActionIcon
+					key={href}
+					color="base"
+					component="a"
+					href={href}
+					variant="outline"
+					target="_blank"
+				>
+					{icon}
+				</ActionIcon>
 			)),
 		[],
 	);
@@ -106,7 +100,7 @@ export function Footer() {
 								Networking
 							</Text>
 							<Space h="md" />
-							<List icon="•">{networkingLinksContent}</List>
+							<Group gap="xs">{networkingLinksContent}</Group>
 						</GridCol>
 					</Grid>
 				</Container>
