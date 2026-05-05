@@ -3,6 +3,8 @@ export * from "./command-line.icon";
 export * from "./cube-transparent.icon";
 export * from "./exclamation-circle.icon";
 export * from "./fire.icon";
+export * from "./github.icon";
+export * from "./linkedin.icon";
 export * from "./moon.icon";
 export * from "./puzzle-piece.icon";
 export * from "./sun.icon";
