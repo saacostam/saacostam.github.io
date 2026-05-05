@@ -4,7 +4,7 @@
 - [x] Iframe
     - [x] Mock layout
     - [x] Loading iframe
-- [ ] Footer
+- [x] Footer
 - [ ] Add Github to navbar
     - [ ] Add Github Icon
 - [ ] Reset scroll to top when navigating to a new page
