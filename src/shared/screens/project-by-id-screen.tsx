@@ -38,7 +38,7 @@ export default function ProjectByIdScreen() {
 				<Text c="indigo">Project</Text>
 			</Breadcrumbs>
 			<ProjectById id={id} />
-			<Divider mt="xl" />
+			<Divider />
 			<RelatedProjects id={id} />
 		</Flex>
 	);

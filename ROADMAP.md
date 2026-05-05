@@ -1,9 +1,9 @@
 # Roadmap
 
 ## Pending Items before Initial Release
-- [ ] Iframe
-    - [ ] Mock layout
-    - [ ] Loading iframe
+- [x] Iframe
+    - [x] Mock layout
+    - [x] Loading iframe
 - [ ] Footer
 - [ ] Add Github to navbar
     - [ ] Add Github Icon
