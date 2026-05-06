@@ -7,7 +7,7 @@
 - [x] Footer
 - [x] Add Github to navbar and footer
     - [x] Add Github Icon
-- [ ] Reset scroll to top when navigating to a new page
+- [x] Reset scroll to top when navigating to a new page
 - [ ] Consider increasing title size for ProjectItem, in the top projects section
 - [ ] Non-exhaustive integration tests
 

@@ -6,6 +6,7 @@ import { HashRouter } from "react-router";
 import { AdaptersProvider } from "@/shared/adapters/core/ui";
 import { ClientsProvider } from "@/shared/clients/ui";
 import { MainErrorBoundary } from "@/shared/errors/ui";
+import { ScrollToTop } from "@/shared/router/ui";
 import { AppRoot } from "./AppRoot";
 import { theme } from "./mantine-theme";
 
@@ -24,6 +25,7 @@ function App() {
 							</ClientsProvider>
 						</AdaptersProvider>
 						<ReactQueryDevtools />
+						<ScrollToTop />
 					</HashRouter>
 				</QueryClientProvider>
 				<Notifications />
