@@ -20,7 +20,7 @@ export function TopProjectsContent({ topProjects }: TopProjectsContentProps) {
 							payload: { id: project.id },
 						})}
 					>
-						<ProjectItem project={project} />
+						<ProjectItem project={project} titleSize="h3" />
 					</UnstyledButton>
 				</GridCol>
 			))}
