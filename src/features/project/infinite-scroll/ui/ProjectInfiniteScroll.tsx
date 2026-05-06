@@ -6,20 +6,21 @@ import { useAdapters } from "@/shared/adapters/core/app";
 import { useRetry } from "@/shared/async-state";
 import { QueryError } from "@/shared/components";
 import { AdjustmentsVertical } from "@/shared/icons";
-import { useEnumArraySearchParam } from "@/shared/router/app";
 import { ProjectInfiniteScrollContent } from "./ProjectInfiniteScrollContent";
 import { ProjectInfiniteScrollSkeleton } from "./ProjectInfiniteScrollSkeleton";
 
-export function ProjectInfiniteScroll() {
+export interface ProjectInfiniteScrollProps {
+	categories: IProjectCategory[];
+	setCategories: (next: IProjectCategory[]) => void;
+}
+
+export function ProjectInfiniteScroll({
+	categories,
+	setCategories,
+}: ProjectInfiniteScrollProps) {
 	const {
 		intersectionObserver: { useOnInView },
 	} = useAdapters();
-
-	const [categories, setCategories] = useEnumArraySearchParam(
-		"category",
-		Object.values(IProjectCategory),
-		[],
-	);
 
 	const onClickCategoryFilter = useCallback(
 		(category: IProjectCategory) => {
