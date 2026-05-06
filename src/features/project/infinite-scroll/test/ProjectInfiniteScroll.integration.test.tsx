@@ -280,5 +280,47 @@ describe("ProjectInfiniteScroll [Integration]", () => {
 				);
 			});
 		});
+
+		it("should render empty state when no projects are returned", async () => {
+			const response = projectClientMockFactory.getAllResponse({
+				elements: [],
+				page: 1,
+				total: 0,
+				limit: 6,
+			});
+
+			const { di } = setup({ response });
+
+			await expectInitialFetch(di, []);
+
+			// empty state should be visible
+			const empty = await projectInfiniteScrollDriver.findEmptyState();
+			expect(empty).toBeInTheDocument();
+		});
+
+		it("should render error state and report error when query fails", async () => {
+			const error = new Error("Boom");
+
+			const { di } = setup();
+
+			di.clients.project.getAll.mockRejectedValueOnce(error);
+
+			renderWithProviders(
+				<ProjectInfiniteScroll categories={[]} setCategories={vi.fn()} />,
+				di,
+			);
+
+			// error UI
+			const queryError = await projectInfiniteScrollDriver.findQueryError();
+			expect(queryError).toBeInTheDocument();
+
+			// error reported
+			expect(di.adapters.errorMonitoringAdapter.report).toHaveBeenCalledWith(
+				error,
+				expect.objectContaining({
+					where: "ProjectInfiniteScroll.queryAllProjects.isError",
+				}),
+			);
+		});
 	});
 });
