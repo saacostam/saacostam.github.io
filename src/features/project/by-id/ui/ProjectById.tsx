@@ -6,15 +6,15 @@ import { useAdapters } from "@/shared/adapters/core/app";
 import { useRetry } from "@/shared/async-state";
 import { QueryError } from "@/shared/components";
 import { isNotFoundError } from "@/shared/errors/domain";
-import { genRoute, RouteName } from "@/shared/router/app";
 import { ProjectByIdContent } from "./ProjectByIdContent";
 import { ProjectByIdSkeleton } from "./ProjectByIdSkeleton";
 
 export interface ProjectByIdProps {
 	id: string;
+	onNotFoundHref: string;
 }
 
-export function ProjectById({ id }: ProjectByIdProps) {
+export function ProjectById({ id, onNotFoundHref }: ProjectByIdProps) {
 	const { notificationAdapter } = useAdapters();
 
 	const nav = useNavigate();
@@ -25,7 +25,7 @@ export function ProjectById({ id }: ProjectByIdProps) {
 
 	useEffect(() => {
 		if (queryProjectById.isError && isNotFoundError(queryProjectById.error)) {
-			nav(genRoute({ name: RouteName.PROJECTS }));
+			nav(onNotFoundHref);
 			notificationAdapter.notify({
 				type: "error",
 				title: "Project not found",
@@ -37,6 +37,7 @@ export function ProjectById({ id }: ProjectByIdProps) {
 		queryProjectById.isError,
 		nav,
 		notificationAdapter.notify,
+		onNotFoundHref,
 	]);
 
 	return (

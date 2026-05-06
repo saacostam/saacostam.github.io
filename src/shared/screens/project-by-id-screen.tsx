@@ -37,7 +37,10 @@ export default function ProjectByIdScreen() {
 				</Anchor>
 				<Text c="indigo">Project</Text>
 			</Breadcrumbs>
-			<ProjectById id={id} />
+			<ProjectById
+				id={id}
+				onNotFoundHref={genRoute({ name: RouteName.PROJECTS })}
+			/>
 			<Divider />
 			<RelatedProjects id={id} />
 		</Flex>
