@@ -39,7 +39,7 @@ export function ProjectInfiniteScrollContent({
 								payload: { id: project.id },
 							})}
 						>
-							<ProjectItem project={project} />
+							<ProjectItem fullHeight project={project} />
 						</UnstyledButton>
 					</GridCol>
 				)),

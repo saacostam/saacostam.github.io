@@ -12,7 +12,7 @@
 - [ ] Non-exhaustive integration tests
 
 ## Bugs/Issues before Initial Release
-- [ ] Center title text for ProjectItem
+- [x] Center title text for ProjectItem
 
 ## Enhancements
 - [ ] Center iframe

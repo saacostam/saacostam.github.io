@@ -26,7 +26,7 @@ export function RelatedProjectsContent({
 								payload: { id: p.id },
 							})}
 						>
-							<ProjectItem project={p} />
+							<ProjectItem fullHeight project={p} />
 						</UnstyledButton>
 					</GridCol>
 				))}
