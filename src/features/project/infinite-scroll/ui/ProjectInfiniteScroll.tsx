@@ -1,5 +1,5 @@
 import { Box, Button, Flex, Paper, Space, Text, Title } from "@mantine/core";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { useQueryAllProjects } from "@/features/project/core/app";
 import { IProjectCategory } from "@/features/project/core/domain";
 import { useAdapters } from "@/shared/adapters/core/app";
@@ -40,17 +40,26 @@ export function ProjectInfiniteScroll({
 	const queryAllProjects = useQueryAllProjects({ categories });
 	const retry = useRetry(queryAllProjects.refetch, queryAllProjects.isLoading);
 
-	const loadMoreRef = useOnInView(
-		(inView) => {
-			if (!queryAllProjects.hasNextPage || queryAllProjects.isFetchingNextPage)
-				return;
+	const { ref: loadMoreRef, inViewport } = useOnInView();
 
-			if (inView) {
-				queryAllProjects.fetchNextPage();
-			}
-		},
-		{ root: null, rootMargin: "300px", threshold: 0 },
-	);
+	useEffect(() => {
+		// Intentionally depend on `data` so the effect re-runs when new pages
+		// are appended while the sentinel is still visible.
+		void queryAllProjects.data;
+
+		if (!queryAllProjects.hasNextPage || queryAllProjects.isFetchingNextPage)
+			return;
+
+		if (inViewport) {
+			queryAllProjects.fetchNextPage();
+		}
+	}, [
+		inViewport,
+		queryAllProjects.data,
+		queryAllProjects.fetchNextPage,
+		queryAllProjects.hasNextPage,
+		queryAllProjects.isFetchingNextPage,
+	]);
 
 	return (
 		<Flex direction="column" gap="lg">

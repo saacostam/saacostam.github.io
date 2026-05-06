@@ -1,12 +1,9 @@
+import { useInViewport } from "@mantine/hooks";
 import { useMemo } from "react";
-import { useOnInView as useExternalOnInView } from "react-intersection-observer";
 import type { IIntersectionObserverAdapter } from "../domain";
 
-const useOnInView: IIntersectionObserverAdapter["useOnInView"] = (
-	cb,
-	options,
-) => {
-	return useExternalOnInView(cb, options);
+const useOnInView: IIntersectionObserverAdapter["useOnInView"] = () => {
+	return useInViewport();
 };
 
 export function useIntersectionObserverAdapter(): IIntersectionObserverAdapter {

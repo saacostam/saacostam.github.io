@@ -4,8 +4,15 @@ import { IProjectCategory } from "@/features/project/core/domain";
 import { projectClientMockFactory } from "@/features/project/core/test";
 import { projectInfiniteScrollDriver } from "@/features/project/infinite-scroll/test";
 import { ProjectInfiniteScroll } from "@/features/project/infinite-scroll/ui/ProjectInfiniteScroll";
-import { createIntersectionObserverAdapterMock } from "@/shared/adapters/intersection-observer/test";
+import type { IIntersectionObserverAdapter } from "@/shared/adapters/intersection-observer/domain";
 import { mockDi, renderWithProviders } from "@/tests";
+
+const mockUseOnView =
+	(inViewport: boolean): IIntersectionObserverAdapter["useOnInView"] =>
+	() => ({
+		inViewport,
+		ref: vi.fn(),
+	});
 
 function setup(args?: {
 	categories?: IProjectCategory[];
@@ -16,11 +23,6 @@ function setup(args?: {
 
 	const setCategories = vi.fn();
 
-	const intersectionObserverMock = createIntersectionObserverAdapterMock();
-
-	di.adapters.intersectionObserver =
-		intersectionObserverMock.adapter as typeof di.adapters.intersectionObserver;
-
 	const response =
 		args?.response ??
 		projectClientMockFactory.getAllResponse({
@@ -29,7 +31,11 @@ function setup(args?: {
 
 	di.clients.project.getAll.mockResolvedValue(response);
 
-	renderWithProviders(
+	di.adapters.intersectionObserver.useOnInView.mockImplementation(
+		mockUseOnView(false),
+	);
+
+	const utils = renderWithProviders(
 		<ProjectInfiniteScroll
 			categories={args?.categories ?? []}
 			setCategories={setCategories}
@@ -37,7 +43,7 @@ function setup(args?: {
 		di,
 	);
 
-	return { di, user, setCategories, intersectionObserverMock };
+	return { di, user, setCategories, ...utils };
 }
 
 async function expectInitialFetch(
@@ -120,7 +126,7 @@ describe("ProjectInfiniteScroll [Integration]", () => {
 				limit: 6,
 			});
 
-			const { di, intersectionObserverMock } = setup({
+			const { di, rerender, setCategories } = setup({
 				response: firstPage,
 			});
 
@@ -136,7 +142,12 @@ describe("ProjectInfiniteScroll [Integration]", () => {
 			});
 
 			// now trigger intersection AFTER state is ready
-			intersectionObserverMock.trigger(true);
+			di.adapters.intersectionObserver.useOnInView.mockImplementation(
+				mockUseOnView(true),
+			);
+			rerender(
+				<ProjectInfiniteScroll categories={[]} setCategories={setCategories} />,
+			);
 
 			await waitFor(() => {
 				expect(di.clients.project.getAll).toHaveBeenCalledTimes(2);
@@ -157,7 +168,7 @@ describe("ProjectInfiniteScroll [Integration]", () => {
 				limit: 6,
 			});
 
-			const { di, intersectionObserverMock } = setup({
+			const { di, rerender, setCategories } = setup({
 				response,
 			});
 
@@ -169,7 +180,12 @@ describe("ProjectInfiniteScroll [Integration]", () => {
 			});
 
 			// trigger intersection
-			intersectionObserverMock.trigger(true);
+			di.adapters.intersectionObserver.useOnInView.mockImplementation(
+				mockUseOnView(true),
+			);
+			rerender(
+				<ProjectInfiniteScroll categories={[]} setCategories={setCategories} />,
+			);
 
 			// assert no additional fetch
 			await waitFor(() => {
@@ -185,7 +201,7 @@ describe("ProjectInfiniteScroll [Integration]", () => {
 				limit: 6,
 			});
 
-			const { di, intersectionObserverMock } = setup({
+			const { di, rerender, setCategories } = setup({
 				response,
 			});
 
@@ -197,7 +213,12 @@ describe("ProjectInfiniteScroll [Integration]", () => {
 			});
 
 			// trigger but NOT intersecting
-			intersectionObserverMock.trigger(false);
+			di.adapters.intersectionObserver.useOnInView.mockImplementation(
+				mockUseOnView(false),
+			);
+			rerender(
+				<ProjectInfiniteScroll categories={[]} setCategories={setCategories} />,
+			);
 
 			await waitFor(() => {
 				expect(di.clients.project.getAll).toHaveBeenCalledTimes(1);
@@ -222,10 +243,9 @@ describe("ProjectInfiniteScroll [Integration]", () => {
 			const di = mockDi();
 			const user = userEvent.setup();
 
-			const intersectionObserverMock = createIntersectionObserverAdapterMock();
-
-			di.adapters.intersectionObserver =
-				intersectionObserverMock.adapter as typeof di.adapters.intersectionObserver;
+			di.adapters.intersectionObserver.useOnInView.mockImplementation(
+				mockUseOnView(false),
+			);
 
 			di.clients.project.getAll
 				.mockResolvedValueOnce(firstPage)
@@ -240,12 +260,18 @@ describe("ProjectInfiniteScroll [Integration]", () => {
 
 			await expectInitialFetch(di, []);
 
-			// load next page
+			// ensure initial fetch settled
 			await waitFor(() => {
 				expect(di.clients.project.getAll).toHaveBeenCalledTimes(1);
 			});
 
-			intersectionObserverMock.trigger(true);
+			// simulate entering viewport → load next page
+			di.adapters.intersectionObserver.useOnInView.mockImplementation(
+				mockUseOnView(true),
+			);
+			rerender(
+				<ProjectInfiniteScroll categories={[]} setCategories={setCategories} />,
+			);
 
 			await waitFor(() => {
 				expect(di.clients.project.getAll).toHaveBeenCalledTimes(2);
@@ -260,7 +286,8 @@ describe("ProjectInfiniteScroll [Integration]", () => {
 
 			expect(setCategories).toHaveBeenCalledWith([category]);
 
-			di.clients.project.getAll.mockResolvedValueOnce(firstPage); // after category change
+			// next call after category change should be page 1 again
+			di.clients.project.getAll.mockResolvedValueOnce(firstPage);
 
 			// simulate external state update (router / parent)
 			rerender(
@@ -270,7 +297,6 @@ describe("ProjectInfiniteScroll [Integration]", () => {
 				/>,
 			);
 
-			// should refetch page 1 with new category
 			await waitFor(() => {
 				expect(di.clients.project.getAll).toHaveBeenLastCalledWith(
 					expect.objectContaining({

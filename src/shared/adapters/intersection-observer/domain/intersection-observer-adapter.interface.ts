@@ -1,10 +1,7 @@
 export interface IIntersectionObserverAdapter {
-	useOnInView: (
-		cb: (inView: boolean, entry: IntersectionObserverEntry) => void,
-		options: {
-			root: Element | null | undefined;
-			rootMargin: string;
-			threshold: number;
-		},
-	) => (element: Element | null | undefined) => (() => void) | undefined;
+	// biome-ignore lint/suspicious/noExplicitAny: generic
+	useOnInView: <T extends HTMLElement = any>() => {
+		inViewport: boolean;
+		ref: React.RefCallback<T | null>;
+	};
 }
