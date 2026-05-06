@@ -4,7 +4,6 @@ import {
 	Box,
 	Container,
 	Divider,
-	Flex,
 	Grid,
 	GridCol,
 	Group,
@@ -12,14 +11,12 @@ import {
 	ListItem,
 	Space,
 	Text,
-	ThemeIcon,
 } from "@mantine/core";
 import { useMemo } from "react";
 import { Link } from "react-router";
 import { NETWORKING_LINKS } from "@/features/networking/app";
 import { useAdapters } from "@/shared/adapters/core/app";
 import { IThemeVariant } from "@/shared/adapters/theme/domain";
-import { CommandLineIcon } from "@/shared/icons";
 import { genRoute, RouteName } from "@/shared/router/app";
 
 const NAV_LINKS = [
@@ -67,19 +64,10 @@ export function Footer() {
 				p="lg"
 			>
 				<Container size="lg" mx="auto">
-					<Flex align="center" direction="row" gap="xs">
-						<ThemeIcon p="0" size="sm" variant="transparent">
-							<CommandLineIcon />
-						</ThemeIcon>
-						<Text c="var(--mantine-primary-color-5)" fw="bold" size="md">
-							Santiago Acosta Meza
-						</Text>
-					</Flex>
-					<Space h="md" />
 					<Grid gutter="md">
 						<GridCol span={{ base: 12, md: 8 }}>
 							<Text fw="bold" size="sm">
-								Full Stack Software Engineer
+								Santiago Acosta Meza
 							</Text>
 							<Space h="md" />
 							<Text c="dimmed" size="sm">
