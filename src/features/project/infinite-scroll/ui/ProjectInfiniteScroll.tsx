@@ -118,7 +118,7 @@ export function ProjectInfiniteScroll({
 					/>
 				)}
 				{/* Sentinel */}
-				<div ref={loadMoreRef} style={{ height: "1px" }} />
+				<div ref={loadMoreRef} style={{ height: "15px" }} />
 			</Paper>
 		</Flex>
 	);
