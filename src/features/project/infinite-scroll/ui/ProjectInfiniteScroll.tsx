@@ -41,11 +41,11 @@ export function ProjectInfiniteScroll({
 	const retry = useRetry(queryAllProjects.refetch, queryAllProjects.isLoading);
 
 	const loadMoreRef = useOnInView(
-		(inView, entry) => {
+		(inView) => {
 			if (!queryAllProjects.hasNextPage || queryAllProjects.isFetchingNextPage)
 				return;
 
-			if (inView && entry.isIntersecting) {
+			if (inView) {
 				queryAllProjects.fetchNextPage();
 			}
 		},
