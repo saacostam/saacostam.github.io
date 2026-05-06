@@ -203,5 +203,82 @@ describe("ProjectInfiniteScroll [Integration]", () => {
 				expect(di.clients.project.getAll).toHaveBeenCalledTimes(1);
 			});
 		});
+
+		it("should reset to page 1 when category changes", async () => {
+			const firstPage = projectClientMockFactory.getAllResponse({
+				elements: [projectClientMockFactory.getProjectMock()],
+				page: 1,
+				total: 12,
+				limit: 6,
+			});
+
+			const secondPage = projectClientMockFactory.getAllResponse({
+				elements: [projectClientMockFactory.getProjectMock({ id: "p2" })],
+				page: 2,
+				total: 12,
+				limit: 6,
+			});
+
+			const di = mockDi();
+			const user = userEvent.setup();
+
+			const intersectionObserverMock = createIntersectionObserverAdapterMock();
+
+			di.adapters.intersectionObserver =
+				intersectionObserverMock.adapter as typeof di.adapters.intersectionObserver;
+
+			di.clients.project.getAll
+				.mockResolvedValueOnce(firstPage)
+				.mockResolvedValueOnce(secondPage);
+
+			const setCategories = vi.fn();
+
+			const { rerender } = renderWithProviders(
+				<ProjectInfiniteScroll categories={[]} setCategories={setCategories} />,
+				di,
+			);
+
+			await expectInitialFetch(di, []);
+
+			// load next page
+			await waitFor(() => {
+				expect(di.clients.project.getAll).toHaveBeenCalledTimes(1);
+			});
+
+			intersectionObserverMock.trigger(true);
+
+			await waitFor(() => {
+				expect(di.clients.project.getAll).toHaveBeenCalledTimes(2);
+			});
+
+			// change category
+			const category = IProjectCategory.Games;
+
+			await user.click(
+				projectInfiniteScrollDriver.findCategoryButton(category),
+			);
+
+			expect(setCategories).toHaveBeenCalledWith([category]);
+
+			di.clients.project.getAll.mockResolvedValueOnce(firstPage); // after category change
+
+			// simulate external state update (router / parent)
+			rerender(
+				<ProjectInfiniteScroll
+					categories={[category]}
+					setCategories={setCategories}
+				/>,
+			);
+
+			// should refetch page 1 with new category
+			await waitFor(() => {
+				expect(di.clients.project.getAll).toHaveBeenLastCalledWith(
+					expect.objectContaining({
+						categories: [category],
+						page: 1,
+					}),
+				);
+			});
+		});
 	});
 });
