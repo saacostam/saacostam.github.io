@@ -148,5 +148,60 @@ describe("ProjectInfiniteScroll [Integration]", () => {
 				page: 2,
 			});
 		});
+
+		it("should NOT fetch next page when there is no next page", async () => {
+			const response = projectClientMockFactory.getAllResponse({
+				elements: [projectClientMockFactory.getProjectMock()],
+				page: 1,
+				total: 1, // no next page
+				limit: 6,
+			});
+
+			const { di, intersectionObserverMock } = setup({
+				response,
+			});
+
+			await expectInitialFetch(di, []);
+
+			// ensure query settled
+			await waitFor(() => {
+				expect(di.clients.project.getAll).toHaveBeenCalledTimes(1);
+			});
+
+			// trigger intersection
+			intersectionObserverMock.trigger(true);
+
+			// assert no additional fetch
+			await waitFor(() => {
+				expect(di.clients.project.getAll).toHaveBeenCalledTimes(1);
+			});
+		});
+
+		it("should NOT fetch next page when sentinel is not intersecting", async () => {
+			const response = projectClientMockFactory.getAllResponse({
+				elements: [projectClientMockFactory.getProjectMock()],
+				page: 1,
+				total: 12, // has next page
+				limit: 6,
+			});
+
+			const { di, intersectionObserverMock } = setup({
+				response,
+			});
+
+			await expectInitialFetch(di, []);
+
+			// ensure query settled
+			await waitFor(() => {
+				expect(di.clients.project.getAll).toHaveBeenCalledTimes(1);
+			});
+
+			// trigger but NOT intersecting
+			intersectionObserverMock.trigger(false);
+
+			await waitFor(() => {
+				expect(di.clients.project.getAll).toHaveBeenCalledTimes(1);
+			});
+		});
 	});
 });
