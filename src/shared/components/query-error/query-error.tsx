@@ -32,7 +32,12 @@ export function QueryError({
 	if (hidden) return null;
 
 	return (
-		<Alert color="red" icon={<ExclamationCircleIcon />} title={title}>
+		<Alert
+			color="red"
+			data-testid="query-error"
+			icon={<ExclamationCircleIcon />}
+			title={title}
+		>
 			{msg}
 			<Flex justify="end">
 				<Button color="red" loading={retry.isLoading} onClick={retry.onClick}>
