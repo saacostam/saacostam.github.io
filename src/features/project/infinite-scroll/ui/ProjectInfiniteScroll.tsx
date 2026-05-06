@@ -49,7 +49,7 @@ export function ProjectInfiniteScroll({
 				queryAllProjects.fetchNextPage();
 			}
 		},
-		{ root: null, rootMargin: "200px", threshold: 0.1 },
+		{ root: null, rootMargin: "300px", threshold: 0 },
 	);
 
 	return (
