@@ -9,10 +9,13 @@
     - [x] Add Github Icon
 - [x] Reset scroll to top when navigating to a new page
 - [x] Consider increasing title size for ProjectItem, in the top projects section
-- [ ] Non-exhaustive integration tests
+- [x] Non-exhaustive integration tests
 
 ## Bugs/Issues before Initial Release
 - [x] Center title text for ProjectItem
 
 ## Enhancements
 - [ ] Center iframe
+- [ ] Increase test coverage
+    - [ ] Unit Tests
+    - [ ] Integration Tests
