@@ -4,20 +4,20 @@ import type { IProject } from "@/features/project/core/domain";
 import { ProjectItem } from "@/features/project/core/ui";
 import { genRoute, RouteName } from "@/shared/router/app";
 
-export interface RelatedProjectsContentProps {
-	relatedProjects: IProject[];
+export interface RecommendedProjectsContentProps {
+	projects: IProject[];
 }
 
-export function RelatedProjectsContent({
-	relatedProjects,
-}: RelatedProjectsContentProps) {
+export function RecommendedProjectsContent({
+	projects,
+}: RecommendedProjectsContentProps) {
 	return (
 		<Flex direction="column" gap="md">
 			<Title size="h4" ta="center">
-				Related Projects
+				Recommended Projects
 			</Title>
 			<Grid gutter="md">
-				{relatedProjects.map((p) => (
+				{projects.map((p) => (
 					<GridCol key={p.id} span={{ base: 12, sm: 4 }}>
 						<UnstyledButton
 							component={Link}

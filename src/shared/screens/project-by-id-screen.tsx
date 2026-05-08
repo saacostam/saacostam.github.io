@@ -2,7 +2,7 @@ import { Anchor, Breadcrumbs, Divider, Flex, Text } from "@mantine/core";
 import { useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router";
 import { ProjectById } from "@/features/project/by-id/ui";
-import { RelatedProjects } from "@/features/project/related-projects/ui";
+import { RecommendedProjects } from "@/features/project/recommended-projects/ui";
 import { useAdapters } from "@/shared/adapters/core/app";
 import { SuspenseLoader } from "@/shared/components";
 import { genRoute, RouteName } from "@/shared/router/app";
@@ -42,7 +42,7 @@ export default function ProjectByIdScreen() {
 				onNotFoundHref={genRoute({ name: RouteName.PROJECTS })}
 			/>
 			<Divider />
-			<RelatedProjects id={id} />
+			<RecommendedProjects id={id} />
 		</Flex>
 	);
 }

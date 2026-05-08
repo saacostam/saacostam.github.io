@@ -1,4 +1,4 @@
 export * from "./useQueryAllProjects";
 export * from "./useQueryProjectById";
-export * from "./useQueryRelatedProjects";
+export * from "./useQueryRecommendedProjects";
 export * from "./useQueryTopProjects";

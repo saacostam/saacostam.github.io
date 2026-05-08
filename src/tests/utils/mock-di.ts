@@ -7,7 +7,7 @@ export function mockDi() {
 		project: {
 			getAll: vi.fn(),
 			getById: vi.fn(),
-			getRelatedProjects: vi.fn(),
+			getRecommendedProjects: vi.fn(),
 			getTopProjects: vi.fn(),
 		},
 	} satisfies IClients;

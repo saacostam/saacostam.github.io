@@ -1,7 +1,7 @@
 import { Flex, Grid, GridCol, Skeleton } from "@mantine/core";
 import { useMemo } from "react";
 
-export function RelatedProjectsSkeleton() {
+export function RecommendedProjectsSkeleton() {
 	const content = useMemo(
 		() =>
 			new Array(3).fill(null).map((_, index) => (

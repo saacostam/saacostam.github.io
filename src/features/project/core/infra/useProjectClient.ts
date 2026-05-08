@@ -52,8 +52,8 @@ export function useProjectClient(): IProjectClient {
 		};
 	}, []);
 
-	const getRelatedProjects: IProjectClient["getRelatedProjects"] = useCallback(
-		async ({ projectId }) => {
+	const getRecommendedProjects: IProjectClient["getRecommendedProjects"] =
+		useCallback(async ({ projectId }) => {
 			const AMOUNT_OF_RECOMMENDATIONS = 3;
 
 			const project = PROJECTS.find((p) => p.id === projectId);
@@ -66,15 +66,13 @@ export function useProjectClient(): IProjectClient {
 				});
 
 			return {
-				relatedProjects: projectRecommendationsService.findClosestNProjects(
+				projects: projectRecommendationsService.findClosestNProjects(
 					project,
 					PROJECTS,
 					AMOUNT_OF_RECOMMENDATIONS,
 				),
 			};
-		},
-		[],
-	);
+		}, []);
 
 	const getTopProjects: IProjectClient["getTopProjects"] =
 		useCallback(async () => {
@@ -87,9 +85,9 @@ export function useProjectClient(): IProjectClient {
 		() => ({
 			getAll,
 			getById,
-			getRelatedProjects,
+			getRecommendedProjects,
 			getTopProjects,
 		}),
-		[getAll, getById, getRelatedProjects, getTopProjects],
+		[getAll, getById, getRecommendedProjects, getTopProjects],
 	);
 }
