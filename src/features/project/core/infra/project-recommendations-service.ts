@@ -1,7 +1,7 @@
 import type { IProject } from "@/features/project/core/domain";
 
 export const projectRecommendationsService = {
-	findClosestNProjects(
+	findNRecommendedProjects(
 		ref: IProject,
 		allProjects: IProject[],
 		n: number = 3,
@@ -11,7 +11,7 @@ export const projectRecommendationsService = {
 		);
 
 		const ascendingOrderingCriterion = (a: IProject, b: IProject): number =>
-			a.rating - b.rating;
+			b.rating - a.rating;
 
 		return differentProjects.sort(ascendingOrderingCriterion).slice(0, n);
 	},

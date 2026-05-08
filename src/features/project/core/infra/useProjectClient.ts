@@ -66,7 +66,7 @@ export function useProjectClient(): IProjectClient {
 				});
 
 			return {
-				projects: projectRecommendationsService.findClosestNProjects(
+				projects: projectRecommendationsService.findNRecommendedProjects(
 					project,
 					PROJECTS,
 					AMOUNT_OF_RECOMMENDATIONS,
