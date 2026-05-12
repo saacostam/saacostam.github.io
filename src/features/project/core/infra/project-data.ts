@@ -49,6 +49,20 @@ export const _PROJECTS: Omit<IProject, "rating">[] = [
 		repoUrl: "https://github.com/saacostam/fuzzy-noteable",
 	},
 	{
+		id: "tic-tac-toe",
+		name: "Tic Tac Toe",
+		category: [IProjectCategory.SoftwareEngineering, IProjectCategory.Games],
+		description:
+			"Tic Tac Toe is a web-based multiplayer game designed as a learning project focused on real-time interactions, state synchronization, and user experience. The application allows players to compete online through a responsive interface while handling live game updates, player flows, and error states. Built to explore the challenges of multiplayer frontend development, the project emphasizes reliability.",
+		image: "/project/tic-tac-toe.png",
+		url: "https://saacostam.github.io/tic-tac-toe/",
+		iframe: {
+			isResponsive: true,
+			canBeUsedInMobile: true,
+		},
+		repoUrl: "https://github.com/saacostam/tic-tac-toe",
+	},
+	{
 		id: "tune-code",
 		name: "TuneCode: Musical Programming Language",
 		category: [IProjectCategory.MusicSoftware],
