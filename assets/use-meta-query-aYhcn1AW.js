@@ -1,0 +1,1 @@
+import{d as n,c as y}from"./ProjectItem-CxyZbE5u.js";import{N as i,r as c}from"./index-CAYRfvEa.js";function o(r,e){return n(r,y)}function l(r){const{queryKey:e,queryFn:s}=r,t=i(),a=c.useCallback(u=>{e&&t.setQueryData(e,u)},[t,e]);return{useQuery:u=>o({...r,...u,queryKey:e,queryFn:s}),setOptimisticData:a}}export{l as u};
