@@ -63,6 +63,19 @@ export const _PROJECTS: Omit<IProject, "rating">[] = [
 		repoUrl: "https://github.com/saacostam/tic-tac-toe",
 	},
 	{
+		id: "monexo",
+		name: "Monexo",
+		category: [IProjectCategory.SoftwareEngineering],
+		description:
+			"Monexo is a clean, straightforward personal finance dashboard designed to help you track expenses and see where your money goes. Instead of forcing you into strict budgeting setups, Monexo simply serves as an easy way to log transactions, view your current spending velocity, and understand your basic habits.",
+		image: "/project/monexo.png",
+		url: "https://saacostam.github.io/monexo",
+		iframe: {
+			isResponsive: true,
+		},
+		repoUrl: "https://github.com/saacostam/monexo",
+	},
+	{
 		id: "tune-code",
 		name: "TuneCode: Musical Programming Language",
 		category: [IProjectCategory.MusicSoftware],
