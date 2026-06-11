@@ -47,8 +47,9 @@ export function Footer() {
 					color="base"
 					component="a"
 					href={href}
-					variant="outline"
+					size="md"
 					target="_blank"
+					variant="outline"
 				>
 					{icon}
 				</ActionIcon>
