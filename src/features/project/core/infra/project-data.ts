@@ -192,6 +192,20 @@ export const _PROJECTS: Omit<IProject, "rating">[] = [
 		repoUrl: "https://github.com/saacostam/fake-store",
 	},
 	{
+		id: "crossword",
+		name: "Crosswords",
+		category: [IProjectCategory.Games],
+		description:
+			"🧩 A simple application for playing and solving crossword puzzles.",
+		image: "/project/crossword.png",
+		url: "https://saacostam.github.io/crossword",
+		iframe: {
+			isResponsive: false,
+			canBeUsedInMobile: false,
+		},
+		repoUrl: "https://github.com/saacostam/crossword",
+	},
+	{
 		id: "trivia",
 		name: "Trivia API - FE App",
 		category: [IProjectCategory.SoftwareEngineering],
