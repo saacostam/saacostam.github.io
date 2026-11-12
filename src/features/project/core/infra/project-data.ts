@@ -63,19 +63,6 @@ export const _PROJECTS: Omit<IProject, "rating">[] = [
 		repoUrl: "https://github.com/saacostam/tic-tac-toe",
 	},
 	{
-		id: "monexo",
-		name: "Monexo",
-		category: [IProjectCategory.SoftwareEngineering],
-		description:
-			"Monexo is a clean, straightforward personal finance dashboard designed to help you track expenses and see where your money goes. Instead of forcing you into strict budgeting setups, Monexo simply serves as an easy way to log transactions, view your current spending velocity, and understand your basic habits.",
-		image: "/project/monexo.png",
-		url: "https://saacostam.github.io/monexo",
-		iframe: {
-			isResponsive: true,
-		},
-		repoUrl: "https://github.com/saacostam/monexo",
-	},
-	{
 		id: "tune-code",
 		name: "TuneCode: Musical Programming Language",
 		category: [IProjectCategory.MusicSoftware],
@@ -87,6 +74,32 @@ export const _PROJECTS: Omit<IProject, "rating">[] = [
 			isResponsive: false,
 		},
 		repoUrl: "https://github.com/saacostam/music-dsl",
+	},
+	{
+		id: "bingo",
+		name: "BingoKit",
+		category: [IProjectCategory.SoftwareEngineering, IProjectCategory.Games],
+		description:
+			"🎱 A simple app for tracking bingo games with multiple boards. Create games, add and manage bingo boards, and keep track of plays and called numbers in one place.",
+		image: "/project/bingo.png",
+		url: "https://saacostam.github.io/bingo-tracking/",
+		iframe: {
+			isResponsive: false,
+		},
+		repoUrl: "https://github.com/saacostam/bingo-tracking",
+	},
+	{
+		id: "monexo",
+		name: "Monexo",
+		category: [IProjectCategory.SoftwareEngineering],
+		description:
+			"Monexo is a clean, straightforward personal finance dashboard designed to help you track expenses and see where your money goes. Instead of forcing you into strict budgeting setups, Monexo simply serves as an easy way to log transactions, view your current spending velocity, and understand your basic habits.",
+		image: "/project/monexo.png",
+		url: "https://saacostam.github.io/monexo",
+		iframe: {
+			isResponsive: true,
+		},
+		repoUrl: "https://github.com/saacostam/monexo",
 	},
 	{
 		id: "lalu",
